@@ -1,6 +1,6 @@
 
-
-INSERT INTO ms.productInStock (id, producentName, modelName, imageURL, stock, price, category) VALUES (100000001, "Fender", "Squire Bullet", "https://im.static-thomann.de/pics/prod/430040.jpg", 10, 200, guitar);
+INSERT INTO category (id, name) VALUES (1, "guitars");
+INSERT INTO product_in_stock (id, producer_name, model_name, imageurl, stock, price, category_id) VALUES (100000001, "Fender", "Squire Bullet", "https://im.static-thomann.de/pics/prod/430040.jpg", 10, 200, 1);
 
 # INSERT INTO "public"."order_main" VALUES (2147483643, '3100 Western Road A', 'customer2@email.com', 'customer2', '2343456', '2018-03-15 12:52:20.439', 100.00, 0, '2018-03-15 12:52:20.439');
 # INSERT INTO "public"."order_main" VALUES (2147483645, '3100 Western Road A', 'customer2@email.com', 'customer2', '2343456', '2018-03-15 12:52:29.007', 4.00, 0, '2018-03-15 12:52:29.007');
