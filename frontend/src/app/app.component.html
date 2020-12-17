@@ -1,10 +1,7 @@
 <div id="app">
   <nav class="navbar navbar-expand navbar-dark bg-dark">
-    <a href="#" class="navbar-brand">musicShop</a>
+    <a href="/home" class="navbar-brand">musicShop</a>
     <ul class="navbar-nav mr-auto" routerLinkActive="active">
-      <li class="nav-item">
-        <a href="/home" class="nav-link" routerLink="home">Home </a>
-      </li>
       <li class="nav-item" *ngIf="showAdminBoard">
         <a href="/admin" class="nav-link" routerLink="admin">Admin Board</a>
       </li>
@@ -14,6 +11,15 @@
       <li class="nav-item">
         <a href="/user" class="nav-link" *ngIf="isLoggedIn" routerLink="user">User</a>
       </li>
+      <li class="nav-item">
+        <a href="/product/guitars" class="nav-link" routerLink="product">guitars</a>
+      </li>
+      <li class="nav-item">
+        <a href="/product/drums" class="nav-link" routerLink="product">drums</a>
+      </li>
+      <li class="nav-item">
+        <a href="/product/keys" class="nav-link" routerLink="product">keys</a>
+      </li>
     </ul>
 
     <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">
@@ -21,7 +27,7 @@
         <a href="/register" class="nav-link" routerLink="register">Sign Up</a>
       </li>
       <li class="nav-item">
-        <a href="/login" class="nav-link" routerLink="login">Login</a>
+        <a href="/login" class="nav-link" routerLink="login">Log in</a>
       </li>
     </ul>
 
@@ -30,7 +36,7 @@
         <a href="/profile" class="nav-link" routerLink="profile">{{ username }}</a>
       </li>
       <li class="nav-item">
-        <a href class="nav-link" (click)="logout()">LogOut</a>
+        <a href class="nav-link" (click)="logout()">Log out</a>
       </li>
     </ul>
   </nav>
