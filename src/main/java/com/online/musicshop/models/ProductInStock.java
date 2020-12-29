@@ -80,4 +80,18 @@ public class ProductInStock {
     public void setCategory(Category category) {
         this.category = category;
     }
+
+
+    @Override
+    public String toString() {
+        return "ProductInStock{" +
+                "id=" + id +
+                ", producerName='" + producerName + '\'' +
+                ", modelName='" + modelName + '\'' +
+                ", imageURL='" + imageURL + '\'' +
+                ", stock=" + stock +
+                ", price=" + price +
+                ", category=" + category +
+                '}';
+    }
 }

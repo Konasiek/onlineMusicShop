@@ -13,6 +13,8 @@ import {BoardUserComponent} from "./board-user/board-user.component";
 import {HomeComponent} from "./home/home.component";
 import {RegisterComponent} from "./register/register.component";
 import {authInterceptorProviders} from "./_helpers/auth.interceptor";
+import { ProductComponent } from './product/product.component';
+import {NgxPaginationModule} from "ngx-pagination";
 
 @NgModule({
   declarations: [
@@ -23,13 +25,15 @@ import {authInterceptorProviders} from "./_helpers/auth.interceptor";
     ProfileComponent,
     BoardAdminComponent,
     BoardModeratorComponent,
-    BoardUserComponent
+    BoardUserComponent,
+    ProductComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxPaginationModule
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
