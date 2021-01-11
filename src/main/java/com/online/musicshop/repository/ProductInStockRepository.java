@@ -12,4 +12,6 @@ public interface ProductInStockRepository extends JpaRepository<ProductInStock, 
     Page<ProductInStock> findByModelNameContaining(String modelName, Pageable pageable);
 
     Page<ProductInStock> findAll(Pageable pageable);
+
+    
 }

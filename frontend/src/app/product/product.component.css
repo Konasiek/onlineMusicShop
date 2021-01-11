@@ -1,3 +1,8 @@
+.col {
+    width: 800px;
+    height: 30px;
+}
+
 #inlistPic {
     float: left;
     display: block;
@@ -62,3 +67,39 @@
 .list-group-item {
     width: 800px;
 }
+
+#abovePhoto {
+    float: left;
+    height: 30px;
+    width: 120px;
+    text-align: center;
+}
+
+#aboveModelName {
+    float: left;
+    height: 30px;
+    width: 150px;
+    text-align: center;
+}
+
+#aboveProducerName {
+    float: left;
+    height: 30px;
+    width: 150px;
+    text-align: center;
+}
+
+#aboveStock {
+    float: left;
+    height: 30px;
+    width: 100px;
+    text-align: center;
+}
+
+#abovePrice {
+    float: left;
+    height: 30px;
+    width: 100px;
+    text-align: center;
+}
+

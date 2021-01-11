@@ -24,7 +24,8 @@
             (pageChange)="handlePageChange($event)">
         </pagination-controls>
     </div>
-    <div class="col-md-6">
+<!--    col was col-md-6    -->
+    <div class="col">
         <div class="mt-3">
             Items per Page:
             <select (change)="handlePageSizeChange($event)">
@@ -33,7 +34,14 @@
                 </option>
             </select>
         </div>
-        <ul class="list-group">
+        <div class="above-list">
+            <div id="abovePhoto"></div>
+            <div id="aboveModelName">model</div>
+            <div id="aboveProducerName">producer</div>
+            <div id="aboveStock">in stock</div>
+            <div id="abovePrice">price</div>
+        </div>
+        <ul style="clear: both" class="list-group">
             <li
                 class="list-group-item"
                 *ngFor="

@@ -16,8 +16,8 @@ export class ProductComponent implements OnInit {
 
     page = 1;
     count = 0;
-    pageSize = 3;
-    pageSizes = [3, 6, 9];
+    pageSize = 5;
+    pageSizes = [5, 10, 50];
 
     constructor(private productService: ProductService) {
     }

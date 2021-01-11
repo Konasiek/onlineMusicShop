@@ -10,7 +10,6 @@ import {BoardAdminComponent} from "./board-admin/board-admin.component";
 import {FormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import {BoardUserComponent} from "./board-user/board-user.component";
-import {HomeComponent} from "./home/home.component";
 import {RegisterComponent} from "./register/register.component";
 import {authInterceptorProviders} from "./_helpers/auth.interceptor";
 import { ProductComponent } from './product/product.component';
@@ -21,7 +20,6 @@ import {NgxPaginationModule} from "ngx-pagination";
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    HomeComponent,
     ProfileComponent,
     BoardAdminComponent,
     BoardModeratorComponent,
