@@ -1,37 +1,20 @@
 <div class="list row">
     <div class="col-md-8">
         <div class="input-group mb-3">
-            <input
-                type="text"
-                class="form-control"
-                placeholder="Search by model name"
-                [(ngModel)]="modelName"/>
+            <input type="text" class="form-control" placeholder="Search by model name" [(ngModel)]="modelName" (keydown)="onKeydown($event)"/>
             <div class="input-group-append">
-                <button
-                    class="btn btn-outline-secondary"
-                    type="button"
-                    (click)="retrieveProducts()">
-                    Search
-                </button>
+                <button class="btn btn-outline-secondary" type="button" (click)="retrieveProducts()">Search</button>
             </div>
         </div>
     </div>
     <div class="col-md-12">
-        <pagination-controls
-            previousLabel="Prev"
-            nextLabel="Next"
-            responsive="true"
-            (pageChange)="handlePageChange($event)">
-        </pagination-controls>
+        <pagination-controls previousLabel="Prev" nextLabel="Next" responsive="true" (pageChange)="handlePageChange($event)"></pagination-controls>
     </div>
 <!--    col was col-md-6    -->
     <div class="col">
-        <div class="mt-3">
-            Items per Page:
+        <div class="mt-3">Items per Page:
             <select (change)="handlePageSizeChange($event)">
-                <option *ngFor="let size of pageSizes" [ngValue]="size">
-                    {{ size }}
-                </option>
+                <option *ngFor="let size of pageSizes" [ngValue]="size">{{ size }}</option>
             </select>
         </div>
         <div class="above-list">
@@ -42,17 +25,7 @@
             <div id="abovePrice">price</div>
         </div>
         <ul style="clear: both" class="list-group">
-            <li
-                class="list-group-item"
-                *ngFor="
-          let product of products | paginate : {
-                  itemsPerPage: pageSize,
-                  currentPage: page,
-                  totalItems: count
-                };
-          let i = index"
-                [class.active]="i == currentIndex"
-                (click)="setActiveProduct(product, i)">
+            <li class="list-group-item" *ngFor="let product of products | paginate : {itemsPerPage: pageSize,currentPage: page,totalItems: count}; let i = index" [class.active]="i == currentIndex" (click)="setActiveProduct(product, i)">
                 <div id="inlistPic"><img class="proPic" src="{{ product.imageURL }}" alt="{{product.modelName}}"></div>
                 <div id="modelName"><p>{{ product.modelName }}</p></div>
                 <div id="producerName"><p>{{ product.producerName }}</p></div>

@@ -82,4 +82,11 @@ export class ProductComponent implements OnInit {
         this.currentProduct = product;
         this.currentIndex = index;
     }
+
+    onKeydown(event) {
+        if (event.key === "Enter") {
+            console.log("enter");
+            this.retrieveProducts();
+        }
+    }
 }
