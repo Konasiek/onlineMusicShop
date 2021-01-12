@@ -1,5 +1,6 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, HostBinding, HostListener, OnInit} from '@angular/core';
 import {ProductService} from "../_services/product.service";
+import {CategoryService} from "../_services/category.service";
 
 @Component({
     selector: 'app-product',
@@ -7,7 +8,6 @@ import {ProductService} from "../_services/product.service";
     styleUrls: ['./product.component.css']
 })
 export class ProductComponent implements OnInit {
-
 
     products: any;
     currentProduct = null;
@@ -18,17 +18,27 @@ export class ProductComponent implements OnInit {
     count = 0;
     pageSize = 5;
     pageSizes = [5, 10, 50];
+    @HostBinding('class.category_Id')
+    category_Id = 0;
 
-    constructor(private productService: ProductService) {
+    constructor(private productService: ProductService,
+                private categoryService: CategoryService) {
     }
 
     ngOnInit(): void {
+        this.categoryService.change.subscribe(a => {
+            this.category_Id = a;
+            this.retrieveProducts();
+        });
         this.retrieveProducts();
     }
 
-    getRequestParams(searchModelName, page, pageSize): any {
+    getRequestParams(category_Id, searchModelName, page, pageSize): any {
         let params = {};
 
+        if (category_Id) {
+            params['category_Id'] = category_Id;
+        }
         if (searchModelName) {
             params['modelName'] = searchModelName;
         }
@@ -42,7 +52,7 @@ export class ProductComponent implements OnInit {
     }
 
     retrieveProducts(): void {
-        const params = this.getRequestParams(this.modelName, this.page, this.pageSize);
+        const params = this.getRequestParams(this.category_Id, this.modelName, this.page, this.pageSize);
 
         this.productService.getAll(params)
             .subscribe(

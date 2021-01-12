@@ -26,6 +26,7 @@ public class ProductController {
 
     @GetMapping
     public ResponseEntity<Map<String, Object>> allProducts(
+            @RequestParam(required = false) Long category_Id,
             @RequestParam(required = false) String modelName,
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "3") int size) {
@@ -35,10 +36,17 @@ public class ProductController {
             Pageable paging = PageRequest.of(page, size);
 
             Page<ProductInStock> pageProducts;
-            if (modelName == null) {
-                pageProducts = productInStockRepository.findAll(paging);
-            } else {
+
+            if (modelName != null && category_Id != null) {
+                pageProducts = productInStockRepository.findByCategory_IdAndModelNameContaining(category_Id, modelName, paging);
+            }
+            else if (category_Id != null) {
+                pageProducts = productInStockRepository.findByCategory_Id(category_Id, paging);
+            }
+            else if (modelName != null) {
                 pageProducts = productInStockRepository.findByModelNameContaining(modelName, paging);
+            } else {
+                pageProducts = productInStockRepository.findAll(paging);
             }
 
             products = pageProducts.getContent();

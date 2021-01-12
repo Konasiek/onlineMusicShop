@@ -11,13 +11,13 @@
       <li class="nav-item">
         <a href="/user" class="nav-link" *ngIf="isLoggedIn" routerLink="user">User</a>
       </li>
-      <li class="nav-item">
-        <a href="/product/guitars" class="nav-link" routerLink="product">guitars</a>
+      <li class="nav-item" (click)="changeCategory(1)">
+        <a href="/product/guitar" class="nav-link" routerLink="product">guitars</a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item" (click)="changeCategory(2)">
         <a href="/product/drums" class="nav-link" routerLink="product">drums</a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item" (click)="changeCategory(3)">
         <a href="/product/keys" class="nav-link" routerLink="product">keys</a>
       </li>
     </ul>
