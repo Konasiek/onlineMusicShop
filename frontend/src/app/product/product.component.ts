@@ -85,7 +85,6 @@ export class ProductComponent implements OnInit {
 
     onKeydown(event) {
         if (event.key === "Enter") {
-            console.log("enter");
             this.retrieveProducts();
         }
     }

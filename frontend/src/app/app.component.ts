@@ -1,6 +1,5 @@
 import {Component, HostListener, OnInit} from '@angular/core';
 import {TokenStorageService} from './_services/token-storage.service';
-import {Subscription} from "rxjs";
 import {CategoryService} from "./_services/category.service";
 
 @Component({
