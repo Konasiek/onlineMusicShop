@@ -1,47 +1,50 @@
 <div id="app">
-  <nav class="navbar navbar-expand navbar-dark bg-dark">
-    <a href="/product" class="navbar-brand">musicShop</a>
-    <ul class="navbar-nav mr-auto" routerLinkActive="active">
-      <li class="nav-item" *ngIf="showAdminBoard">
-        <a href="/admin" class="nav-link" routerLink="admin">Admin Board</a>
-      </li>
-      <li class="nav-item" *ngIf="showModeratorBoard">
-        <a href="/mod" class="nav-link" routerLink="mod">Moderator Board</a>
-      </li>
-      <li class="nav-item">
-        <a href="/user" class="nav-link" *ngIf="isLoggedIn" routerLink="user">User</a>
-      </li>
-      <li class="nav-item" (click)="changeCategory(1)">
-        <a href="/product/guitar" class="nav-link" routerLink="product">guitars</a>
-      </li>
-      <li class="nav-item" (click)="changeCategory(2)">
-        <a href="/product/drums" class="nav-link" routerLink="product">drums</a>
-      </li>
-      <li class="nav-item" (click)="changeCategory(3)">
-        <a href="/product/keys" class="nav-link" routerLink="product">keys</a>
-      </li>
-    </ul>
+    <nav class="navbar navbar-expand navbar-dark bg-dark">
+        <a href="/product" class="navbar-brand">musicShop</a>
+        <ul class="navbar-nav mr-auto" routerLinkActive="active">
+            <li class="nav-item" *ngIf="showAdminBoard">
+                <a href="/admin" class="nav-link" routerLink="admin">admin Board</a>
+            </li>
+            <li class="nav-item" *ngIf="showModeratorBoard">
+                <a href="/mod" class="nav-link" routerLink="mod">moderator Board</a>
+            </li>
+            <li class="nav-item">
+                <a href="/user" class="nav-link" *ngIf="isLoggedIn" routerLink="user">user</a>
+            </li>
+            <li class="nav-item" (click)="changeCategory(1)">
+                <a href="/product/guitar" class="nav-link" routerLink="product">guitars</a>
+            </li>
+            <li class="nav-item" (click)="changeCategory(2)">
+                <a href="/product/drums" class="nav-link" routerLink="product">drums</a>
+            </li>
+            <li class="nav-item" (click)="changeCategory(3)">
+                <a href="/product/keys" class="nav-link" routerLink="product">keys</a>
+            </li>
+        </ul>
 
-    <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">
-      <li class="nav-item">
-        <a href="/register" class="nav-link" routerLink="register">Sign Up</a>
-      </li>
-      <li class="nav-item">
-        <a href="/login" class="nav-link" routerLink="login">Log in</a>
-      </li>
-    </ul>
+        <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">
+            <li class="nav-item">
+                <a href="/register" class="nav-link" routerLink="register">sign Up</a>
+            </li>
+            <li class="nav-item">
+                <a href="/login" class="nav-link" routerLink="login">log in</a>
+            </li>
+        </ul>
 
-    <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn">
-      <li class="nav-item">
-        <a href="/profile" class="nav-link" routerLink="profile">{{ username }}</a>
-      </li>
-      <li class="nav-item">
-        <a href class="nav-link" (click)="logout()">Log out</a>
-      </li>
-    </ul>
-  </nav>
+        <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn">
+            <li class="nav-item">
+                <a href="/cart" class="nav-link" routerLink="cart">cart</a>
+            </li>
+            <li class="nav-item">
+                <a href="/profile" class="nav-link" routerLink="profile">{{ username }}</a>
+            </li>
+            <li class="nav-item">
+                <a href class="nav-link" (click)="logout()">log out</a>
+            </li>
+        </ul>
+    </nav>
 
-  <div class="container">
-    <router-outlet></router-outlet>
-  </div>
+    <div class="container">
+        <router-outlet></router-outlet>
+    </div>
 </div>

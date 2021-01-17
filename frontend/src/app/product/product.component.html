@@ -29,7 +29,8 @@
                 <div id="modelName"><p>{{ product.modelName }}</p></div>
                 <div id="producerName"><p>{{ product.producerName }}</p></div>
                 <div id="stock"><p>{{ product.stock }}</p></div>
-                <div id="price"><p>{{ product.price }}$</p></div>
+                <div id="price"><p>${{ product.price }}</p></div>
+                <div id="addToCart"><div id="outerButton"><button class="button" (click)="addToCart(product)">add to cart</button></div></div>
             </li>
         </ul>
     </div>

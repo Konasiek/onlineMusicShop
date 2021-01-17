@@ -65,7 +65,7 @@
 }
 
 .list-group-item {
-    width: 745px;
+    width: 800px;
 }
 
 #abovePhoto {
@@ -103,24 +103,5 @@
     text-align: center;
 }
 
-#addToCart {
-    float: left;
-    height: 100px;
-    width: 100px;
-    background-color: lightblue;
-}
 
-#outerButton {
-    position: absolute;
-    top: 50%;
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
-    margin-left: 4px;
-}
-
-.button {
-    border: none;
-    border-radius: 5px;
-    background-color: -moz-cellhighlighttext;
-}
 

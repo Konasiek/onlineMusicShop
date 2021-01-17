@@ -1,0 +1,23 @@
+<div class="list row">
+    <div class="col">
+        <div class="above-list">
+            <div id="abovePhoto"></div>
+            <div id="aboveModelName">model</div>
+            <div id="aboveProducerName">producer</div>
+            <div id="aboveStock">in stock</div>
+            <div id="abovePrice">price</div>
+        </div>
+        <div style="clear: both" *ngIf="cart.length === 0">
+            <h3>Cart is empty</h3>
+        </div>
+        <ul style="clear: both" class="list-group">
+            <li class="list-group-item" *ngFor="let product of cart">
+                <div id="inlistPic"><img class="proPic" src="{{ product.imageURL }}" alt="{{product.modelName}}"></div>
+                <div id="modelName"><p>{{ product.modelName }}</p></div>
+                <div id="producerName"><p>{{ product.producerName }}</p></div>
+                <div id="stock"><p>{{ product.stock }}</p></div>
+                <div id="price"><p>${{ product.price }}</p></div>
+            </li>
+        </ul>
+    </div>
+</div>

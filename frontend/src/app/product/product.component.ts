@@ -1,6 +1,7 @@
 import {Component, HostBinding, HostListener, OnInit} from '@angular/core';
 import {ProductService} from "../_services/product.service";
 import {CategoryService} from "../_services/category.service";
+import {CartService} from "../_services/cart.service";
 
 @Component({
     selector: 'app-product',
@@ -22,7 +23,8 @@ export class ProductComponent implements OnInit {
     category_Id = 0;
 
     constructor(private productService: ProductService,
-                private categoryService: CategoryService) {
+                private categoryService: CategoryService,
+                private cartService: CartService) {
     }
 
     ngOnInit(): void {
@@ -87,5 +89,11 @@ export class ProductComponent implements OnInit {
         if (event.key === "Enter") {
             this.retrieveProducts();
         }
+    }
+
+    addToCart(product): void {
+        console.log("added to cart: " + JSON.stringify(product));
+        this.cartService.addToCart(product, 1);
+
     }
 }
