@@ -65,7 +65,7 @@
 }
 
 .list-group-item {
-    width: 800px;
+    width: 900px;
 }
 
 #abovePhoto {
@@ -102,6 +102,51 @@
     width: 100px;
     text-align: center;
 }
+
+#addToCart {
+    float: left;
+    height: 100px;
+    width: 100px;
+    background-color: lightblue;
+}
+
+#outerButton1 {
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    margin-left: 4px;
+}
+#outerButton2 {
+    float: left;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    margin-left: 4px;
+
+}
+
+.button {
+    border: none;
+    border-radius: 5px;
+    background-color: #343A40;
+    color: #CCCECF;
+}
+#quantity {
+    height: 100px;
+    width: 80px;
+    float: left;
+    background-color:lightslategrey;
+}
+
+#removeFromCart {
+    float: left;
+    height: 100px;
+    width: 80px;
+    background-color: lightskyblue;
+}
+
 
 
 

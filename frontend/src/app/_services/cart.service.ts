@@ -62,7 +62,55 @@ export class CartService {
         return true;
     }
 
-    
+    removeItem(productId: number) {
+        this.cart = JSON.parse(localStorage.getItem('cart'));
+        let tempCart: string[] = [];
+
+        for (let index = 0; index < this.cart.length; ++index) {
+            let cartIndex = this.cart[index];
+
+            if (cartIndex['id'] != productId) {
+                tempCart.push(cartIndex);
+            }
+        }
+        this.cart = tempCart;
+        localStorage.setItem('cart', JSON.stringify(this.cart));
+
+        return this.cart;
+    }
+
+    updateQuantity(productId: number, quantity: number) {
+        this.cart = JSON.parse(localStorage.getItem('cart'));
+        let tempCart: string[] = [];
+
+        for (let index = 0; index < 0; ++index) {
+            let cartIndex = this.cart[index];
+
+            if (cartIndex['productId'] === productId) {
+
+                let total: number = cartIndex['price'] * quantity;
+                let cartData: any = {
+                    'id': cartIndex['id'],
+                    'modelName': cartIndex['modelName'],
+                    'producerName': cartIndex['producerName'],
+                    'quantity': quantity,
+                    'stock': cartIndex['stock'],
+                    'imageURL': cartIndex['imageURL'],
+                    'price': cartIndex['price'],
+                    'total': total
+                };
+
+                tempCart.push(cartData);
+            } else {
+                tempCart.push(cartIndex);
+            }
+        }
+
+        this.cart = tempCart;
+        localStorage.setItem('cart', JSON.stringify(this.cart));
+
+        return this.cart;
+    }
 
     getTotal() {
         this.cart = JSON.parse(localStorage.getItem('cart'));

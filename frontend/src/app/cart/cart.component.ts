@@ -27,5 +27,20 @@ export class CartComponent implements OnInit {
         this.hasItems = (this.cart.length > 0);
     }
 
+    updateQuantity(productId: number, quantity: number) {
 
+        if (quantity > 0) {
+            this.cart = this.cartService.updateQuantity(productId, quantity);
+            this.initCart();
+        } else {
+            console.log("WARNING: input quantity of items");
+            this.initCart();
+        }
+    }
+
+    removeItem(id: number) {
+        console.log("productId: "+ id);
+        this.cart = this.cartService.removeItem(id);
+        this.initCart();
+    }
 }

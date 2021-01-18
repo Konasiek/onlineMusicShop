@@ -121,6 +121,8 @@
 .button {
     border: none;
     border-radius: 5px;
-    background-color: -moz-cellhighlighttext;
+    background-color: #343A40;
+    color: #CCCECF;
 }
+
 

@@ -17,6 +17,8 @@
                 <div id="producerName"><p>{{ product.producerName }}</p></div>
                 <div id="stock"><p>{{ product.stock }}</p></div>
                 <div id="price"><p>${{ product.price }}</p></div>
+                <div id="quantity"><div id="outerButton1"><button class="button" (click)="changeQuantity(product)">quantity</button></div></div>
+                <div id="removeFromCart"><div id="outerButton2"><button class="button" (click)="removeItem(product.id)">remove</button></div></div>
             </li>
         </ul>
     </div>
