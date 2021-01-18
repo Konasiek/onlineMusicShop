@@ -103,6 +103,13 @@
     text-align: center;
 }
 
+#aboveQuantity{
+    float: left;
+    height: 30px;
+    width: 80px;
+    text-align: center;
+}
+
 #addToCart {
     float: left;
     height: 100px;
@@ -117,6 +124,7 @@
     transform: translateY(-50%);
     margin-left: 4px;
 }
+
 #outerButton2 {
     float: left;
     position: absolute;
@@ -133,11 +141,12 @@
     background-color: #343A40;
     color: #CCCECF;
 }
+
 #quantity {
     height: 100px;
     width: 80px;
     float: left;
-    background-color:lightslategrey;
+    background-color: lightslategrey;
 }
 
 #removeFromCart {
@@ -145,6 +154,11 @@
     height: 100px;
     width: 80px;
     background-color: lightskyblue;
+}
+
+#cartIsEmpty {
+    clear: both;
+    text-align: center;
 }
 
 
