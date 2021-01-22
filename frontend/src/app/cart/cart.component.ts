@@ -33,13 +33,12 @@ export class CartComponent implements OnInit {
             this.cart = this.cartService.updateQuantity(productId, quantity);
             this.initCart();
         } else {
-            console.log("WARNING: input quantity of items");
             this.initCart();
         }
+        console.log("whole update quan from cart comp");
     }
 
     removeItem(id: number) {
-        console.log("productId: "+ id);
         this.cart = this.cartService.removeItem(id);
         this.initCart();
     }

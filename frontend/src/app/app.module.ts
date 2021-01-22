@@ -15,6 +15,7 @@ import {authInterceptorProviders} from "./_helpers/auth.interceptor";
 import {ProductComponent} from './product/product.component';
 import {NgxPaginationModule} from "ngx-pagination";
 import {CartComponent} from './cart/cart.component';
+import {FooterComponent} from './footer/footer.component';
 
 @NgModule({
     declarations: [

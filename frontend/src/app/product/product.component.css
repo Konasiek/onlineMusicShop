@@ -3,13 +3,17 @@
     height: 30px;
 }
 
+.searchBar {
+    width: 745px;
+    margin-left: 15px;
+}
+
 #inlistPic {
     float: left;
     display: block;
     margin: auto;
     text-align: center;
     object-fit: scale-down;
-    background-color: darkkhaki;
     max-width: 100px;
     width: 100%;
     height: auto;
@@ -27,7 +31,7 @@
     margin-left: fill;
     margin-right: fill;
     line-height: 100px;
-    background-color: cyan;
+    background-color: #f2f2f2;
     text-align: center;
 }
 
@@ -38,7 +42,6 @@
     margin-left: auto;
     margin-right: auto;
     line-height: 100px;
-    background-color: lightgrey;
     text-align: center;
 }
 
@@ -49,7 +52,7 @@
     margin-left: auto;
     margin-right: auto;
     line-height: 100px;
-    background-color: lightpink;
+    background-color: #f2f2f2;
     text-align: center;
 }
 
@@ -60,7 +63,6 @@
     margin-left: auto;
     margin-right: auto;
     line-height: 100px;
-    background-color: lightgreen;
     text-align: center;
 }
 
@@ -107,7 +109,6 @@
     float: left;
     height: 100px;
     width: 100px;
-    background-color: lightblue;
 }
 
 #outerButton {
@@ -123,6 +124,21 @@
     border-radius: 5px;
     background-color: #343A40;
     color: #CCCECF;
+}
+
+.itemsOnPage {
+    padding-top: 3px;
+    width: 500px;
+    height: 30px;
+    margin-top: 10px;
+    float: left;
+}
+
+.pagination {
+    margin-top: 10px;
+    float: left;
+    height: 150px;
+    width: 250px;
 }
 
 

@@ -83,10 +83,10 @@ export class CartService {
         this.cart = JSON.parse(localStorage.getItem('cart'));
         let tempCart: string[] = [];
 
-        for (let index = 0; index < 0; ++index) {
+        for (let index = 0; index < this.cart.length; ++index) {
             let cartIndex = this.cart[index];
 
-            if (cartIndex['productId'] === productId) {
+            if (cartIndex['id'] === productId) {
 
                 let total: number = cartIndex['price'] * quantity;
                 let cartData: any = {

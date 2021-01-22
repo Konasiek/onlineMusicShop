@@ -3,7 +3,7 @@ INSERT INTO category (id, name) VALUES (1, "guitars");
 INSERT INTO category (id, name) VALUES (2, "drums");
 INSERT INTO category (id, name) VALUES (3, "keys");
 
-INSERT INTO product_in_stock (id, producer_name, model_name, imageurl, stock, price, category_id) VALUES (100000001, "Fender", "Squire Bullet", "https://im.static-thomann.de/pics/prod/430040.jpg", 10, 220, 1);
+INSERT INTO product_in_stock (id, producer_name, model_name, imageurl, stock, price, category_id) VALUES (100000001, "Fender", "Squire Bullet", "https://im.static-thomann.de/pics/prod/430040.jpg", 8, 220, 1);
 INSERT INTO product_in_stock (id, producer_name, model_name, imageurl, stock, price, category_id) VALUES (100000002, "Ramirez", "Estudio 3", "https://im.static-thomann.de/pics/prod/435050.jpg", 5, 2630, 1);
 INSERT INTO product_in_stock (id, producer_name, model_name, imageurl, stock, price, category_id) VALUES (100000003, "Taylor", "814ce", "https://im.static-thomann.de/pics/prod/493927.jpg", 1, 3850, 1);
 INSERT INTO product_in_stock (id, producer_name, model_name, imageurl, stock, price, category_id) VALUES (100000004, "Mapex", "Tornado Stand", "https://thumbs.static-thomann.de/thumb/orig/pics/bdb/398654/12249092_800.webp", 2, 499, 2);

@@ -19,9 +19,10 @@
                 <div id="producerName"><p>{{ product.producerName }}</p></div>
                 <div id="stock"><p>{{ product.stock }}</p></div>
                 <div id="price"><p>${{ product.price }}</p></div>
-                <div id="quantity"><div id="outerButton1"><input type="number" name="quantity" value="{{product.quantity}}" min="1" max="{{product.stock}}"></div></div>
+                <div id="quantity"><div id="outerButton1"><input id="inputQuantity" type="number" name="quantity" value="{{product.quantity}}" min="1" max="{{product.stock}}" #quantity (change)="updateQuantity(product.id, quantity.value)"></div></div>
                 <div id="removeFromCart"><div id="outerButton2"><button class="button" (click)="removeItem(product.id)">remove</button></div></div>
             </li>
         </ul>
+        <div id="grandTotal" *ngIf="cart.length !== 0">Total cost: ${{grandTotal}}</div>
     </div>
 </div>
