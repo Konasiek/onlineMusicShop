@@ -12,13 +12,13 @@ export class CartService {
     data: string[] = [];
 
     initCart() {
-        localStorage.setItem('cart', '');
+        sessionStorage.setItem('cart', '');
         return true;
     }
 
     retriveCart() {
-        if (localStorage.getItem('cart')) {
-            return JSON.parse(localStorage.getItem('cart'));
+        if (sessionStorage.getItem('cart')) {
+            return JSON.parse(sessionStorage.getItem('cart'));
         } else {
             return false;
         }
@@ -26,8 +26,8 @@ export class CartService {
 
     addToCart(product: any, quantity: number) {
 
-        this.cart = (localStorage.getItem('cart') != null) ? JSON.parse(localStorage.getItem('cart')) : [];
-        this.data = JSON.parse(localStorage.getItem('data'));
+        this.cart = (sessionStorage.getItem('cart') != null) ? JSON.parse(sessionStorage.getItem('cart')) : [];
+        this.data = JSON.parse(sessionStorage.getItem('data'));
         let hasMatch: boolean = false;
 
         //checking product exists already in a cart
@@ -57,13 +57,13 @@ export class CartService {
         };
 
         this.cart.push(cartData);
-        localStorage.setItem('cart', JSON.stringify(this.cart));
+        sessionStorage.setItem('cart', JSON.stringify(this.cart));
 
         return true;
     }
 
     removeItem(productId: number) {
-        this.cart = JSON.parse(localStorage.getItem('cart'));
+        this.cart = JSON.parse(sessionStorage.getItem('cart'));
         let tempCart: string[] = [];
 
         for (let index = 0; index < this.cart.length; ++index) {
@@ -74,13 +74,13 @@ export class CartService {
             }
         }
         this.cart = tempCart;
-        localStorage.setItem('cart', JSON.stringify(this.cart));
+        sessionStorage.setItem('cart', JSON.stringify(this.cart));
 
         return this.cart;
     }
 
     updateQuantity(productId: number, quantity: number) {
-        this.cart = JSON.parse(localStorage.getItem('cart'));
+        this.cart = JSON.parse(sessionStorage.getItem('cart'));
         let tempCart: string[] = [];
 
         for (let index = 0; index < this.cart.length; ++index) {
@@ -107,13 +107,13 @@ export class CartService {
         }
 
         this.cart = tempCart;
-        localStorage.setItem('cart', JSON.stringify(this.cart));
+        sessionStorage.setItem('cart', JSON.stringify(this.cart));
 
         return this.cart;
     }
 
     getTotal() {
-        this.cart = JSON.parse(localStorage.getItem('cart'));
+        this.cart = JSON.parse(sessionStorage.getItem('cart'));
         let total: number = 0.00;
 
         for (let index = 0; index < this.cart.length; ++index) {
