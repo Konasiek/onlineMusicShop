@@ -33,8 +33,15 @@
 
         <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn">
             <li class="nav-item">
-                <a href="/cart" class="nav-link" routerLink="cart" *ngIf="itemsInCart !== 0">{{itemsInCart}} cart</a>
-                <a href="/cart" class="nav-link" routerLink="cart" *ngIf="itemsInCart === 0">cart</a>
+                <a href="/cart" class="nav-link" routerLink="cart" *ngIf="itemsInCart !== 0">
+                    <div id="cartWithItems">
+                        <img src="../assets/shoppingCartWithItems.png" class="shoppingCart">
+                        <div id="numberOfItems">{{itemsInCart}}</div>
+                    </div>
+                </a>
+                <a href="/cart" class="nav-link" routerLink="cart" *ngIf="itemsInCart === 0">
+                    <img src="../assets/shoppingCart.png" class="shoppingCart">
+                </a>
             </li>
             <li class="nav-item">
                 <a href="/profile" class="nav-link" routerLink="profile">{{ username }}</a>
