@@ -35,7 +35,6 @@ export class CartComponent implements OnInit {
         } else {
             this.initCart();
         }
-        console.log("whole update quan from cart comp");
     }
 
     removeItem(id: number) {

@@ -1,4 +1,4 @@
-import {Component, HostBinding, HostListener, OnInit} from '@angular/core';
+import {AfterViewInit, Component, HostBinding, HostListener, OnInit} from '@angular/core';
 import {ProductService} from "../_services/product.service";
 import {CategoryService} from "../_services/category.service";
 import {CartService} from "../_services/cart.service";
@@ -11,7 +11,6 @@ import {CartService} from "../_services/cart.service";
 export class ProductComponent implements OnInit {
 
     products: any;
-    currentProduct = null;
     currentIndex = -1;
     modelName = '';
 
@@ -80,17 +79,12 @@ export class ProductComponent implements OnInit {
         this.retrieveProducts();
     }
 
-    setActiveProduct(product, index): void {
-        this.currentProduct = product;
-        this.currentIndex = index;
-    }
-
     onKeydown(event) {
         if (event.key === "Enter") {
             this.retrieveProducts();
         }
     }
-
+    @HostListener('addToCart')
     addToCart(product): void {
         console.log("added to cart: " + JSON.stringify(product));
         this.cartService.addToCart(product, 1);

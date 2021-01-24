@@ -1,6 +1,7 @@
-import {Component, HostListener, OnInit} from '@angular/core';
+import {Component, HostBinding, HostListener, OnInit} from '@angular/core';
 import {TokenStorageService} from './_services/token-storage.service';
 import {CategoryService} from "./_services/category.service";
+import {CartService} from "./_services/cart.service";
 
 @Component({
     selector: 'app-root',
@@ -13,13 +14,20 @@ export class AppComponent implements OnInit {
     showAdminBoard = false;
     showModeratorBoard = false;
     username?: string;
+    @HostBinding('class.itemsInCart')
+    itemsInCart: number;
 
     constructor(private tokenStorageService: TokenStorageService,
-                private categoryService: CategoryService) {
+                private categoryService: CategoryService,
+                private cartService: CartService) {
     }
 
     ngOnInit(): void {
         this.isLoggedIn = !!this.tokenStorageService.getToken();
+        this.cartService.change.subscribe(a => {
+            this.itemsInCart = a;
+        });
+        this.cartService.getItemsInCart();
 
         if (this.isLoggedIn) {
             const user = this.tokenStorageService.getUser();
@@ -36,7 +44,7 @@ export class AppComponent implements OnInit {
     }
 
     @HostListener('changeCategory')
-    changeCategory(category_Id) : void{
+    changeCategory(category_Id): void {
         this.categoryService.changeCategory(category_Id);
     }
 }

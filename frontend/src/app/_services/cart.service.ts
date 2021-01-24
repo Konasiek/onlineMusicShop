@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import {EventEmitter, Injectable, Output} from '@angular/core';
 
 @Injectable({
     providedIn: 'root'
@@ -10,6 +10,9 @@ export class CartService {
 
     cart: string[] = [];
     data: string[] = [];
+
+    itemsInCart: number;
+
 
     initCart() {
         sessionStorage.setItem('cart', '');
@@ -59,6 +62,8 @@ export class CartService {
         this.cart.push(cartData);
         sessionStorage.setItem('cart', JSON.stringify(this.cart));
 
+        this.getItemsInCart();
+
         return true;
     }
 
@@ -75,6 +80,8 @@ export class CartService {
         }
         this.cart = tempCart;
         sessionStorage.setItem('cart', JSON.stringify(this.cart));
+
+        this.getItemsInCart();
 
         return this.cart;
     }
@@ -121,5 +128,12 @@ export class CartService {
             total += cartIndex['total'];
         }
         return total;
+    }
+
+    @Output() change: EventEmitter<number> = new EventEmitter<number>();
+    getItemsInCart(): void {
+        let tempCart = JSON.parse(sessionStorage.getItem('cart'));
+        this.itemsInCart = tempCart.length;
+        this.change.emit(this.itemsInCart);
     }
 }

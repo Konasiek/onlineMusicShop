@@ -6,7 +6,7 @@ INSERT INTO category (id, name) VALUES (3, "keys");
 INSERT INTO product_in_stock (id, producer_name, model_name, imageurl, stock, price, category_id) VALUES (100000001, "Fender", "Squire Bullet", "https://im.static-thomann.de/pics/prod/430040.jpg", 8, 220, 1);
 INSERT INTO product_in_stock (id, producer_name, model_name, imageurl, stock, price, category_id) VALUES (100000002, "Ramirez", "Estudio 3", "https://im.static-thomann.de/pics/prod/435050.jpg", 5, 2630, 1);
 INSERT INTO product_in_stock (id, producer_name, model_name, imageurl, stock, price, category_id) VALUES (100000003, "Taylor", "814ce", "https://im.static-thomann.de/pics/prod/493927.jpg", 1, 3850, 1);
-INSERT INTO product_in_stock (id, producer_name, model_name, imageurl, stock, price, category_id) VALUES (100000004, "Mapex", "Tornado Stand", "https://thumbs.static-thomann.de/thumb/orig/pics/bdb/398654/12249092_800.webp", 2, 499, 2);
+INSERT INTO product_in_stock (id, producer_name, model_name, imageurl, stock, price, category_id) VALUES (100000004, "Mapex", "Tornado Standard", "https://thumbs.static-thomann.de/thumb/orig/pics/bdb/398654/12249092_800.webp", 2, 499, 2);
 INSERT INTO product_in_stock (id, producer_name, model_name, imageurl, stock, price, category_id) VALUES (100000005, "Pearl", "Decade Standard", "https://thumbs.static-thomann.de/thumb/orig/pics/bdb/381359/11196529_800.webp", 3, 1050, 2);
 INSERT INTO product_in_stock (id, producer_name, model_name, imageurl, stock, price, category_id) VALUES (100000006, "Traps", "A-400", "https://thumbs.static-thomann.de/thumb/orig/pics/bdb/210274/11372409_800.webp", 4, 515, 2);
 INSERT INTO product_in_stock (id, producer_name, model_name, imageurl, stock, price, category_id) VALUES (100000007, "Yamaha", "Genos", "https://thumbs.static-thomann.de/thumb/orig/pics/bdb/422200/12853122_800.webp", 3, 3200, 3);
@@ -17,7 +17,6 @@ INSERT INTO product_in_stock (id, producer_name, model_name, imageurl, stock, pr
 INSERT INTO roles values (1, "ROLE_USER");
 INSERT INTO roles values (2, "ROLE_MODERATOR");
 INSERT INTO roles values (3, "ROLE_ADMIN");
-
 
 INSERT INTO users (id, email, password, username) VALUES (100000001, "user100000001@gmail.com", "$2a$10$3qLW6bJJi2ep7b1ROOSSge5xPdnV1C7I8Yw6Pu0QlbBm8I0vPNDk2", "user100000001");
 INSERT INTO users (id, email, password, username) VALUES (100000002, "user100000002@gmail.com", "$2a$10$mRDJBN7sxoSsmmpIfc6.t.9SDV75eE3M7LGSeX2Ei.SKTCL4nhX4e", "user100000002");
