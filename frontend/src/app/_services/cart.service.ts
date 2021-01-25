@@ -133,7 +133,9 @@ export class CartService {
     @Output() change: EventEmitter<number> = new EventEmitter<number>();
     getItemsInCart(): void {
         let tempCart = JSON.parse(sessionStorage.getItem('cart'));
-        this.itemsInCart = tempCart.length;
+        if (tempCart != null) {
+            this.itemsInCart = tempCart.length;
+        }
         this.change.emit(this.itemsInCart);
     }
 }
