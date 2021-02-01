@@ -166,8 +166,18 @@
 #grandTotal {
     margin-top: 20px;
     text-align: right;
-    width: 800px;
+    width: 674px;
     height: 150px;
+    float: left;
+}
+
+#shipping {
+    margin-top: 20px;
+    margin-left: 20px;
+
+    float: left;
+    height: 150px;
+
 }
 
 

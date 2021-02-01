@@ -1,0 +1,44 @@
+.button {
+    border: none;
+    border-radius: 5px;
+    background-color: #343A40;
+    color: #CCCECF;
+}
+
+.text {
+    font-size: small;
+    margin-bottom: 0px;
+}
+.col-md-12 {
+
+}
+
+.form-group.row {
+    height: 50px;
+}
+.input-group {
+    height: 20px;
+}
+.form-control {
+    height: 30px;
+    padding-left: 7px;
+}
+.rightButtons {
+    float: left;
+    background: aqua;
+    width: 50%;
+}
+
+.leftForm {
+    float: left;
+    width: 50%;
+    background: antiquewhite;
+}
+.col-l {
+    width: 100%;
+}
+
+.cartInfo {
+    text-align: center;
+}
+

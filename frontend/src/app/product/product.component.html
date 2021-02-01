@@ -29,7 +29,7 @@
             <select (change)="handlePageSizeChange($event)"><option *ngFor="let size of pageSizes" [ngValue]="size">{{ size }}</option></select>
         </div>
         <div class="pagination">
-            <pagination-controls previousLabel="Prev" nextLabel="Next" responsive="true" (pageChange)="handlePageChange($event)"></pagination-controls>
+            <pagination-controls previousLabel="" nextLabel="" responsive="true" (pageChange)="handlePageChange($event)"></pagination-controls>
         </div>
     </div>
 </div>

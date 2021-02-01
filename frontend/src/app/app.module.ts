@@ -7,7 +7,7 @@ import {LoginComponent} from "./login/login.component";
 import {ProfileComponent} from "./profile/profile.component";
 import {BoardModeratorComponent} from "./board-moderator/board-moderator.component";
 import {BoardAdminComponent} from "./board-admin/board-admin.component";
-import {FormsModule} from "@angular/forms";
+import {FormBuilder, FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import {BoardUserComponent} from "./board-user/board-user.component";
 import {RegisterComponent} from "./register/register.component";
@@ -15,6 +15,7 @@ import {authInterceptorProviders} from "./_helpers/auth.interceptor";
 import {ProductComponent} from './product/product.component';
 import {NgxPaginationModule} from "ngx-pagination";
 import {CartComponent} from './cart/cart.component';
+import {ShippingComponent} from './shipping/shipping.component';
 
 @NgModule({
     declarations: [
@@ -27,13 +28,15 @@ import {CartComponent} from './cart/cart.component';
         BoardUserComponent,
         ProductComponent,
         CartComponent,
+        ShippingComponent,
     ],
     imports: [
         BrowserModule,
         AppRoutingModule,
         FormsModule,
         HttpClientModule,
-        NgxPaginationModule
+        NgxPaginationModule,
+        ReactiveFormsModule
     ],
     providers: [authInterceptorProviders],
     bootstrap: [AppComponent]
