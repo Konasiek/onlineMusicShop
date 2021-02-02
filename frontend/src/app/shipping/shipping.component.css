@@ -1,4 +1,12 @@
-.button {
+.button1 {
+    margin-right: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #343A40;
+    color: #CCCECF;
+}
+
+.button2 {
     border: none;
     border-radius: 5px;
     background-color: #343A40;
@@ -8,9 +16,6 @@
 .text {
     font-size: small;
     margin-bottom: 0px;
-}
-.col-md-12 {
-
 }
 
 .form-group.row {
@@ -25,20 +30,87 @@
 }
 .rightButtons {
     float: left;
-    background: aqua;
     width: 50%;
 }
 
 .leftForm {
     float: left;
     width: 50%;
-    background: antiquewhite;
 }
 .col-l {
-    width: 100%;
+    width: 90%;
 }
 
 .cartInfo {
     text-align: center;
 }
+#producerName {
+    text-align: center;
+    float: left;
+    background-color: #f2f2f2;
+    height: 30px;
+    width: 130px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 30px;
+}
 
+#modelName {
+    float: left;
+    text-align: center;
+    height: 30px;
+    width: 170px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 30px;
+}
+
+#price {
+    background-color: #f2f2f2;
+    text-align: center;
+    float: left;
+    height: 30px;
+    width: 80px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 30px;
+}
+
+#quantity {
+    text-align: center;
+    float: left;
+    height: 30px;
+    width: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 30px;
+}
+
+#subTotal {
+    background-color: #f2f2f2;
+    text-align: center;
+    float: left;
+    height: 30px;
+    width: 80px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 30px;
+}
+
+#grandTotal {
+    margin-top: 20px;
+    text-align: right;
+    width: 100%;
+    height: 50px;
+    clear: both;
+    padding-right: 40px;
+}
+
+.form-actions {
+    margin-top: 20px;
+}
+
+.shipButtons {
+    position: relative;
+    left: 310px;
+}

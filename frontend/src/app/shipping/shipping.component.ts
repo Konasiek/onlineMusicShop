@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {ValidationFieldService} from "../_services/validation-field.service";
+import {CartService} from "../_services/cart.service";
 
 
 @Component({
@@ -13,9 +14,15 @@ export class ShippingComponent implements OnInit {
     shippingForm: FormGroup;
     shipData: any;
 
+    cart: string[] = [];
+    grandTotal: number = 0.00;
+    hasItems: boolean;
+
     constructor(
         private validationFieldService: ValidationFieldService,
-        private fb: FormBuilder) {
+        private fb: FormBuilder,
+        private cartService: CartService) {
+
         this.shippingForm = fb.group({
             'contact_person': new FormControl(null, [Validators.required]),
             'email': new FormControl(null, [Validators.required, Validators.email]),
@@ -29,7 +36,6 @@ export class ShippingComponent implements OnInit {
 
         //Initialize validation service
         this.validationFieldService.initializeForm(this.shippingForm);
-
     }
 
     ngOnInit(): void {
@@ -47,6 +53,9 @@ export class ShippingComponent implements OnInit {
                 'country': this.shipData.country,
                 'postal': this.shipData.postal
             });
+        }
+        if (this.cartService.retriveCart()) {
+            this.initCart();
         }
     }
 
@@ -70,5 +79,11 @@ export class ShippingComponent implements OnInit {
         } else {
             this.validationFieldService.validateAllFormFields(this.shippingForm);
         }
+    }
+
+    initCart() {
+        this.cart = this.cartService.retriveCart();
+        this.grandTotal = this.cartService.getTotal();
+        this.hasItems = (this.cart.length > 0);
     }
 }

@@ -151,12 +151,23 @@
                 </div>
             </div>
             <div class="rightButtons">
-                <div class="cartInfo"> CART INFO</div>
+                <div class="cartInfo">
+                    <ul class="list-group">
+                        <li class="list-group-item" *ngFor="let product of cart">
+                            <div id="producerName"><p>{{ product.producerName }}</p></div>
+                            <div id="modelName"><p>{{ product.modelName }}</p></div>
+                            <div id="price"><p>${{ product.price }}</p></div>
+                            <div id="quantity"><p>x{{ product.quantity }}</p></div>
+                            <div id="subTotal"><p>= ${{ product.quantity*product.price }}</p></div>
+                        </li>
+                    </ul>
+                </div>
+                <div id="grandTotal" *ngIf="cart.length !== 0"><strong>Total cost: ${{grandTotal}}</strong></div>
                 <div class="form-actions">
                     <div class="form-group row">
-                        <div class="col-md-12 login-submit-container">
-                            <button [routerLink]="['/cart']" class="button">back to cart</button>
-                            <button class="button"
+                        <div class="shipButtons">
+                            <button [routerLink]="['/cart']" class="button1">back to cart</button>
+                            <button class="button2" [routerLink]="['/profile']"
                                     (click)="save(shippingForm.value)">make an order
                             </button>
                         </div>
