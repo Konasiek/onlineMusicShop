@@ -3,8 +3,8 @@ package com.online.musicshop.models;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "product_in_stock")
-public class ProductInStock {
+@Table(name = "product_in_order")
+public class ProductInOrder {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,14 +16,14 @@ public class ProductInStock {
 
     private String imageURL;
 
-    private Integer stock;
-
     private Long price;
 
     @ManyToOne
     private Category category;
 
-    public ProductInStock() {
+    private Long quantity;
+
+    public ProductInOrder() {
     }
 
     public Long getId() {
@@ -58,14 +58,6 @@ public class ProductInStock {
         this.imageURL = imageURL;
     }
 
-    public Integer getStock() {
-        return stock;
-    }
-
-    public void setStock(Integer stock) {
-        this.stock = stock;
-    }
-
     public Long getPrice() {
         return price;
     }
@@ -82,16 +74,24 @@ public class ProductInStock {
         this.category = category;
     }
 
+    public Long getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Long quantity) {
+        this.quantity = quantity;
+    }
+
     @Override
     public String toString() {
-        return "ProductInStock{" +
+        return "ProductInOrder{" +
                 "id=" + id +
                 ", producerName='" + producerName + '\'' +
                 ", modelName='" + modelName + '\'' +
                 ", imageURL='" + imageURL + '\'' +
-                ", stock=" + stock +
                 ", price=" + price +
                 ", category=" + category +
+                ", quantity=" + quantity +
                 '}';
     }
 }

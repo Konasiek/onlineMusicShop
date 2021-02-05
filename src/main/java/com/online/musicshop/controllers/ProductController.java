@@ -39,11 +39,9 @@ public class ProductController {
 
             if (modelName != null && category_Id != null) {
                 pageProducts = productInStockRepository.findByCategory_IdAndModelNameContaining(category_Id, modelName, paging);
-            }
-            else if (category_Id != null) {
+            } else if (category_Id != null) {
                 pageProducts = productInStockRepository.findByCategory_Id(category_Id, paging);
-            }
-            else if (modelName != null) {
+            } else if (modelName != null) {
                 pageProducts = productInStockRepository.findByModelNameContaining(modelName, paging);
             } else {
                 pageProducts = productInStockRepository.findAll(paging);
