@@ -32,18 +32,22 @@ INSERT INTO user_roles (user_id, role_id) VALUES (100000005, 3);
 
 INSERT INTO cart (id) VALUES (10000001);
 INSERT INTO cart (id) VALUES (10000002);
+INSERT INTO cart (id) VALUES (10000003);
 
 INSERT INTO product_in_order (id, imageurl, model_name, price, producer_name, quantity, category_id) VALUES (100001, "https://im.static-thomann.de/pics/prod/430040.jpg", "Squire Bullet", 220,"Fender", 2, 1);
 INSERT INTO product_in_order (id, imageurl, model_name, price, producer_name, quantity, category_id) VALUES (100002, "https://thumbs.static-thomann.de/thumb/orig/pics/bdb/361864/10111357_800.webp", "SD 7", 2600,"Ketron", 1, 3);
 INSERT INTO product_in_order (id, imageurl, model_name, price, producer_name, quantity, category_id) VALUES (100003, "https://thumbs.static-thomann.de/thumb/orig/pics/bdb/370974/10944234_800.webp", "PA-X47", 2820,"Korg", 1, 3);
 INSERT INTO product_in_order (id, imageurl, model_name, price, producer_name, quantity, category_id) VALUES (100004, "https://thumbs.static-thomann.de/thumb/orig/pics/bdb/398654/12249092_800.webp", "Tornado Standard", 499,"Mapex", 1, 2);
+INSERT INTO product_in_order (id, imageurl, model_name, price, producer_name, quantity, category_id) VALUES (100005, "https://thumbs.static-thomann.de/thumb/orig/pics/bdb/422200/12853122_800.webp", "Genos", 3200,"Yamaha", 1, 3);
 
 INSERT INTO cart_products (cart_id, product_id) VALUES (10000001, 100001);
 INSERT INTO cart_products (cart_id, product_id) VALUES (10000001, 100002);
 INSERT INTO cart_products (cart_id, product_id) VALUES (10000002, 100003);
 INSERT INTO cart_products (cart_id, product_id) VALUES (10000002, 100004);
+INSERT INTO cart_products (cart_id, product_id) VALUES (10000003, 100005);
 
 INSERT INTO orders (id, building_number_and_apartment, city, contact_person, country, email, phone, post_code, street, cart_id, user_id) VALUES (10000001, "5", "Boston", "Ken Adams", "USA", "kenadams12@gmail.com", "5067675567", "324-454", "Main", 10000001, 100000001);
-INSERT INTO orders (id, building_number_and_apartment, city, contact_person, country, email, phone, post_code, street, cart_id, user_id) VALUES (10000002, "123/56", "New York", "Regina Phelenge", "USA", "regina212@gmail.com", "4656456445", "324-234", "Mayflower", 10000002, 100000002);
+INSERT INTO orders (id, building_number_and_apartment, city, contact_person, country, email, phone, post_code, street, cart_id, user_id) VALUES (10000003, "5", "Boston", "Ken Adams", "USA", "kenadams12@gmail.com", "5067675567", "324-454", "Main", 10000003, 100000001);
+INSERT INTO orders (id, building_number_and_apartment, city, contact_person, country, email, phone, post_code, street, cart_id, user_id) VALUES (10000002, "123/56", "New York", "Regina Phelenge", "USA", "regina12@gmail.com", "4656456445", "324-234", "Mayflower", 10000002, 100000002);
 
 

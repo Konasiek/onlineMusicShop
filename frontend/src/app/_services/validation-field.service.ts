@@ -7,7 +7,7 @@ import {FormControl, FormGroup} from "@angular/forms";
 export class ValidationFieldService {
 
     form: FormGroup;
-    private formSubmitAttempt: boolean;
+    formSubmitAttempt: boolean;
 
     initializeForm(form: FormGroup) {
         this.form = form;

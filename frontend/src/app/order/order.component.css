@@ -1,0 +1,96 @@
+.col {
+    width: 800px;
+    height: auto;
+}
+
+.list-group-item {
+    width: 745px;
+}
+
+#outerButton {
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    margin-left: 4px;
+}
+
+.button {
+    border: none;
+    border-radius: 5px;
+    background-color: #343A40;
+    color: #CCCECF;
+}
+
+.itemsOnPage {
+    padding-top: 3px;
+    width: 500px;
+    height: 30px;
+    margin-top: 10px;
+    float: left;
+}
+
+.pagination {
+    margin-top: 10px;
+    float: left;
+    height: 150px;
+    width: 250px;
+}
+
+.orderTitle {
+    text-align: center;
+    width: 800px;
+    height: 80px;
+    margin-top: 10px;
+}
+
+.productList {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+#modelName {
+    float: left;
+    height: 40px;
+    width: 150px;
+    margin-left: fill;
+    margin-right: fill;
+    line-height: 40px;
+    background-color: #f2f2f2;
+    text-align: center;
+}
+
+#producerName {
+    float: left;
+    height: 40px;
+    width: 150px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 40px;
+    text-align: center;
+}
+
+#productPrice {
+    height: 40px;
+    width: 80px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 40px;
+    text-align: center;
+}
+
+#quantity {
+    float: left;
+    height: 40px;
+    width: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 40px;
+    text-align: center;
+    background-color: #f2f2f2;
+}
+
+#address {
+    height: 30px;
+}

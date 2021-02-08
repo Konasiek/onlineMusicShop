@@ -16,6 +16,7 @@ import {ProductComponent} from './product/product.component';
 import {NgxPaginationModule} from "ngx-pagination";
 import {CartComponent} from './cart/cart.component';
 import {ShippingComponent} from './shipping/shipping.component';
+import { OrderComponent } from './order/order.component';
 
 @NgModule({
     declarations: [
@@ -29,6 +30,7 @@ import {ShippingComponent} from './shipping/shipping.component';
         ProductComponent,
         CartComponent,
         ShippingComponent,
+        OrderComponent,
     ],
     imports: [
         BrowserModule,

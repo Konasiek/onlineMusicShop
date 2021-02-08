@@ -9,6 +9,7 @@ import {BoardAdminComponent} from "./board-admin/board-admin.component";
 import {ProductComponent} from "./product/product.component";
 import {CartComponent} from "./cart/cart.component";
 import {ShippingComponent} from "./shipping/shipping.component";
+import {OrderComponent} from "./order/order.component";
 
 const routes: Routes = [
     {path: 'login', component: LoginComponent},
@@ -20,6 +21,7 @@ const routes: Routes = [
     {path: 'product', component: ProductComponent},
     {path: 'cart', component: CartComponent},
     {path: 'shipping', component: ShippingComponent},
+    {path: 'order', component: OrderComponent},
     {path: '', redirectTo: 'product', pathMatch: 'full'}
 ];
 

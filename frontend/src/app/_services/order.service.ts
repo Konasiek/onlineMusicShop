@@ -2,12 +2,12 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 
-const baseUrl = 'http://localhost:8080/api/product';
+const baseUrl = 'http://localhost:8080/api/order';
 
 @Injectable({
     providedIn: 'root'
 })
-export class ProductService {
+export class OrderService {
 
     constructor(private http: HttpClient) {
     }
@@ -18,3 +18,4 @@ export class ProductService {
 
     //add more crud method later
 }
+
