@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
-import {ValidationFieldService} from "../_services/validation-field.service";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {CartService} from "../_services/cart.service";
 
 
@@ -12,73 +11,53 @@ import {CartService} from "../_services/cart.service";
 export class ShippingComponent implements OnInit {
 
     shippingForm: FormGroup;
-    shipData: any;
+    submitted = false;
 
     cart: string[] = [];
     grandTotal: number = 0.00;
     hasItems: boolean;
 
     constructor(
-        private validationFieldService: ValidationFieldService,
-        private fb: FormBuilder,
+        private formBuilder: FormBuilder,
         private cartService: CartService) {
-
-        this.shippingForm = fb.group({
-            'contact_person': new FormControl(null, [Validators.required]),
-            'email': new FormControl(null, [Validators.required, Validators.email]),
-            'phone': new FormControl(null, [Validators.required]),
-            'bldg_unit': new FormControl(null, [Validators.required]),
-            'street': new FormControl(null, [Validators.required]),
-            'city': new FormControl(null, [Validators.required]),
-            'country': new FormControl(null, [Validators.required]),
-            'postal': new FormControl(null, [Validators.required]),
-        });
-
-        //Initialize validation service
-        this.validationFieldService.initializeForm(this.shippingForm);
     }
 
     ngOnInit(): void {
 
-        if (localStorage.getItem('shipDetail')) {
-            this.shipData = JSON.parse(localStorage.getItem('shipDetail'));
+        this.shippingForm = this.formBuilder.group({
+            bldg_unit: ['', [Validators.required, Validators.pattern(/^[^A-Za-z]+$/)]],
+            street: ['', [Validators.required, Validators.pattern(/^([^0-9]*)$/)]],
+            city: ['', [Validators.required, Validators.pattern(/^([^0-9]*)$/)]],
+            country: ['', [Validators.required, Validators.pattern(/^([^0-9]*)$/)]],
+            postal: ['', Validators.required],
+            contactPerson: ['', [Validators.required, Validators.pattern(/^([^0-9]*)$/)]],
+            email: ['', [Validators.required, Validators.email]],
+            phone: ['', [Validators.required, Validators.pattern(/^[^A-Za-z]+$/), Validators.minLength(9)]]
+        });
 
-            this.shippingForm.patchValue({
-                'contact_person': this.shipData.contact_person,
-                'email': this.shipData.email,
-                'phone': this.shipData.phone,
-                'bldg_unit': this.shipData.bldg_unit,
-                'street': this.shipData.street,
-                'city': this.shipData.city,
-                'country': this.shipData.country,
-                'postal': this.shipData.postal
-            });
-        }
         if (this.cartService.retriveCart()) {
             this.initCart();
         }
     }
 
-    save(data) {
+    get f() {
+        return this.shippingForm.controls;
+    }
 
-        if (this.shippingForm.valid) {
+    onSubmit() {
+        this.submitted = true;
 
-            this.shipData = {
-                'bldg_unit': data['bldg_unit'],
-                'city': data['city'],
-                'country': data['country'],
-                'contact_person': data['contact_person'],
-                'email': data['email'],
-                'phone': data['phone'],
-                'postal': data['postal'],
-                'street': data['street']
-            };
-
-            localStorage.setItem('shipDetail', JSON.stringify(this.shipData));
-
-        } else {
-            this.validationFieldService.validateAllFormFields(this.shippingForm);
+        if (this.shippingForm.invalid) {
+            alert('please correct shipping details')
+            return;
         }
+
+        alert('Order has been placed')
+    }
+
+    onReset() {
+        this.submitted = false;
+        this.shippingForm.reset();
     }
 
     initCart() {

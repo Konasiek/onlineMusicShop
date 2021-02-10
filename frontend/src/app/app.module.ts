@@ -7,7 +7,7 @@ import {LoginComponent} from "./login/login.component";
 import {ProfileComponent} from "./profile/profile.component";
 import {BoardModeratorComponent} from "./board-moderator/board-moderator.component";
 import {BoardAdminComponent} from "./board-admin/board-admin.component";
-import {FormBuilder, FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import {BoardUserComponent} from "./board-user/board-user.component";
 import {RegisterComponent} from "./register/register.component";
@@ -16,7 +16,7 @@ import {ProductComponent} from './product/product.component';
 import {NgxPaginationModule} from "ngx-pagination";
 import {CartComponent} from './cart/cart.component';
 import {ShippingComponent} from './shipping/shipping.component';
-import { OrderComponent } from './order/order.component';
+import {OrderComponent} from './order/order.component';
 
 @NgModule({
     declarations: [

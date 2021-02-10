@@ -31,15 +31,12 @@ public class OrderController {
             @RequestParam(defaultValue = "3") int size) {
 
         try {
-                                                                System.out.println("user_id "+user_id);
             List<Order> orders;
             Pageable paging = PageRequest.of(page, size);
 
             Page<Order> pageOrders;
             pageOrders = orderRepository.findByUser_Id(user_id, paging);
             orders = pageOrders.getContent();
-                                                                System.out.println("order list is empty: "+orders.isEmpty());
-                                                                orders.forEach(System.out::println);
 
             Map<String, Object> response = new HashMap<>();
             response.put("orders", orders);

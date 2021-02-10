@@ -5,147 +5,115 @@
         <br>
     </div>
     <div class="shop-checkout-delivery-content">
-        <form [formGroup]="shippingForm">
+        <form [formGroup]="shippingForm" (ngSubmit)="onSubmit()">
             <div class="leftForm">
-                <div class="col-l" >
-                    <div class="form-group row" [ngClass]="this.validationFieldService.displayFieldCss('bldg_unit')">
+                <div class="col-l">
+                    <div class="form-group row">
                         <div class="col-md-12">
-                            <label class="text" for="bldg_unit"><strong>Building number/apartment</strong></label>
+                            <label class="text"><strong>Building number/apartment</strong></label>
                             <div class="input-group">
-                                <input formControlName="bldg_unit" class="form-control" id="bldg_unit" name="bldg_unit"
-                                       placeholder="" type="text">
+                                <input type="text" formControlName="bldg_unit" class="form-control"
+                                       [ngClass]="{'is-invalid': submitted && f.bldg_unit.errors}"/>
+                            </div>
+                            <div *ngIf="submitted">
+                                <div class="fieldError" *ngIf="f.bldg_unit.errors?.required">building number is required</div>
+                                <div class="fieldError" *ngIf="f.bldg_unit.errors?.pattern">letters are not allowed</div>
                             </div>
                         </div>
-                        <div class="col-md-12">
-                            <validation-field
-                                [displayError]="this.validationFieldService.isFieldValid('bldg_unit')"
-                                field="bldg_unit"
-                                [errorMsg]="this.validationFieldService.getError('bldg_unit','Bldg No. Unit / Floor etc.')">
-                            </validation-field>
-                        </div>
                     </div>
-                    <div class="form-group row" [ngClass]="this.validationFieldService.displayFieldCss('street')">
+                    <div class="form-group row">
                         <div class="col-md-12">
-                            <label class="text" for="street"><strong>Street</strong></label>
+                            <label class="text"><strong>Street</strong></label>
                             <div class="input-group">
-                                <input formControlName="street" class="form-control" id="street" name="street"
-                                       placeholder="" type="text">
+                                <input type="text" formControlName="street" class="form-control"
+                                       [ngClass]="{'is-invalid': submitted && f.street.errors}"/>
                             </div>
-                        </div>
-                        <div class="col-md-12">
-                            <validation-field
-                                [displayError]="this.validationFieldService.isFieldValid('street')"
-                                field="street"
-                                [errorMsg]="this.validationFieldService.getError('street','Street')">
-                            </validation-field>
-                        </div>
-                    </div>
-                    <div class="form-group row" [ngClass]="this.validationFieldService.displayFieldCss('city')">
-                        <div class="col-md-12">
-                            <div class="form-group row" [ngClass]="this.validationFieldService.displayFieldCss('city')">
-                                <div class="col-md-12">
-                                    <label class="text" for="city"><strong>City</strong></label>
-                                    <input formControlName="city" class="form-control" id="city" name="city"
-                                           placeholder="" type="text">
-                                </div>
-                                <div class="col-md-12">
-                                    <validation-field
-                                        [displayError]="this.validationFieldService.isFieldValid('city')"
-                                        field="city"
-                                        [errorMsg]="this.validationFieldService.getError('city','City')">
-                                    </validation-field>
-                                </div>
+                            <div *ngIf="submitted && f.street.errors">
+                                <div class="fieldError" *ngIf="f.street.errors?.required">street is required</div>
+                                <div class="fieldError" *ngIf="f.street.errors?.pattern">digitals are not allowed</div>
                             </div>
                         </div>
                     </div>
-                    <div class="form-group row" [ngClass]="this.validationFieldService.displayFieldCss('country')">
+                    <div class="form-group row">
                         <div class="col-md-12">
-                            <div class="form-group row"
-                                 [ngClass]="this.validationFieldService.displayFieldCss('country')">
-                                <div class="col-md-12">
-                                    <label class="text" for="country"><strong>Country</strong></label>
-                                    <input formControlName="country" class="form-control" id="country" name="country"
-                                           placeholder="" type="text">
-                                </div>
-                                <div class="col-md-12">
-                                    <validation-field
-                                        [displayError]="this.validationFieldService.isFieldValid('country')"
-                                        field="country"
-                                        [errorMsg]="this.validationFieldService.getError('country','Country')">
-                                    </validation-field>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group row" [ngClass]="this.validationFieldService.displayFieldCss('postal')">
-                        <div class="col-md-12">
-                            <div class="form-group row"
-                                 [ngClass]="this.validationFieldService.displayFieldCss('postal')">
-                                <div class="col-md-12">
-                                    <label class="text" for="postal"><strong>Post Code</strong></label>
-                                    <input formControlName="postal" class="form-control" id="postal" name="postal"
-                                           placeholder="" type="text">
-                                </div>
-                                <div class="col-md-12">
-                                    <validation-field
-                                        [displayError]="this.validationFieldService.isFieldValid('postal')"
-                                        field="postal"
-                                        [errorMsg]="this.validationFieldService.getError('postal','Post Code')">
-                                    </validation-field>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group row"
-                         [ngClass]="this.validationFieldService.displayFieldCss('contact_person')">
-                        <div class="col-md-12">
-                            <label class="text" for="contact_person"><strong>Contact Person</strong></label>
+                            <label class="text"><strong>City</strong></label>
                             <div class="input-group">
-                                <input formControlName="contact_person" class="form-control" id="contact_person"
-                                       name="contact_person" placeholder="" type="text">
+                                <input type="text" formControlName="city" class="form-control"
+                                       [ngClass]="{'is-invalid': submitted && f.city.errors}"/>
                             </div>
-                        </div>
-                        <div class="col-md-12">
-                            <validation-field
-                                [displayError]="this.validationFieldService.isFieldValid('contact_person')"
-                                field="contact_person"
-                                [errorMsg]="this.validationFieldService.getError('contact_person','Contact Person')">
-                            </validation-field>
+                            <div *ngIf="submitted && f.city.errors">
+                                <div class="fieldError" *ngIf="f.city.errors?.required">city is required</div>
+                                <div class="fieldError" *ngIf="f.city.errors?.pattern">digitals are not allowed</div>
+                            </div>
                         </div>
                     </div>
-                    <div class="form-group row" [ngClass]="this.validationFieldService.displayFieldCss('email')">
+                    <div class="form-group row">
                         <div class="col-md-12">
-                            <label class="text" for="email"><strong>E-mail Address</strong></label>
+                            <label class="text"><strong>Country</strong></label>
                             <div class="input-group">
-                                <input formControlName="email" class="form-control" id="email" name="email"
-                                       placeholder="" type="text">
+                                <input type="text" formControlName="country" class="form-control"
+                                       [ngClass]="{'is-invalid': submitted && f.country.errors}"/>
                             </div>
-                        </div>
-                        <div class="col-md-12">
-                            <validation-field
-                                [displayError]="this.validationFieldService.isFieldValid('email')"
-                                field="email"
-                                [errorMsg]="this.validationFieldService.getError('email','Email')">
-                            </validation-field>
+                            <div *ngIf="submitted && f.country.errors">
+                                <div class="fieldError" *ngIf="f.country.errors?.required">country is required</div>
+                                <div class="fieldError" *ngIf="f.country.errors?.pattern">digitals are not allowed</div>
+                            </div>
                         </div>
                     </div>
-                    <div class="form-group row" [ngClass]="this.validationFieldService.displayFieldCss('phone')">
+                    <div class="form-group row">
                         <div class="col-md-12">
-                            <label class="text" for="phone"><strong>Phone</strong></label>
+                            <label class="text"><strong>Post-code</strong></label>
                             <div class="input-group">
-                                <input formControlName="phone" class="form-control" id="phone" name="phone"
-                                       placeholder="" type="text">
+                                <input type="text" formControlName="postal" class="form-control"
+                                       [ngClass]="{'is-invalid': submitted && f.postal.errors}"/>
+                            </div>
+                            <div *ngIf="submitted && f.postal.errors">
+                                <div class="fieldError" *ngIf="f.postal.errors?.required">post-code is required</div>
                             </div>
                         </div>
+                    </div>
+                    <div class="form-group row">
                         <div class="col-md-12">
-                            <validation-field
-                                [displayError]="this.validationFieldService.isFieldValid('phone')"
-                                field="phone"
-                                [errorMsg]="this.validationFieldService.getError('phone','Phone')">
-                                <br>
-                                <br>
-                                <br>
-                            </validation-field>
+                            <label class="text"><strong>Contact person</strong></label>
+                            <div class="input-group">
+                                <input type="text" formControlName="contactPerson" class="form-control"
+                                       [ngClass]="{'is-invalid': submitted && f.contactPerson.errors}"/>
+                            </div>
+                            <div *ngIf="submitted && f.contactPerson.errors">
+                                <div class="fieldError" *ngIf="f.contactPerson.errors?.required">contact person is
+                                    required
+                                </div>
+                                <div class="fieldError" *ngIf="f.contactPerson.errors?.pattern">digitals are not
+                                    allowed
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-12">
+                            <label class="text"><strong>E-mail</strong></label>
+                            <div class="input-group">
+                                <input type="text" formControlName="email" class="form-control"
+                                       [ngClass]="{'is-invalid': submitted && f.email.errors}"/>
+                            </div>
+                            <div *ngIf="submitted && f.email.errors">
+                                <div class="fieldError" *ngIf="f.email.errors?.required">email is required</div>
+                                <div class="fieldError" *ngIf="f.email.errors?.email">email is incorrect</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-12">
+                            <label class="text"><strong>Phone</strong></label>
+                            <div class="input-group">
+                                <input type="text" formControlName="phone" class="form-control"
+                                       [ngClass]="{'is-invalid': submitted && f.phone.errors}"/>
+                            </div>
+                            <div *ngIf="submitted && f.phone.errors">
+                                <div class="fieldError" *ngIf="f.phone.errors?.required">phone number is required</div>
+                                <div class="fieldError" *ngIf="f.phone.errors?.pattern">letters are not allowed</div>
+                                <div class="fieldError" *ngIf="f.phone.errors?.minlength">minimum number of digits is 9</div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -158,7 +126,7 @@
                             <div id="modelName"><p>{{ product.modelName }}</p></div>
                             <div id="price"><p>${{ product.price }}</p></div>
                             <div id="quantity"><p>x{{ product.quantity }}</p></div>
-                            <div id="subTotal"><p>= ${{ product.quantity*product.price }}</p></div>
+                            <div id="subTotal"><p>= ${{ product.quantity * product.price }}</p></div>
                         </li>
                     </ul>
                 </div>
@@ -166,10 +134,8 @@
                 <div class="form-actions">
                     <div class="form-group row">
                         <div class="shipButtons">
-                            <button [routerLink]="['/cart']" class="button1">back to cart</button>
-                            <button class="button2" [routerLink]="['/order']"
-                                    (click)="save(shippingForm.value)">make an order
-                            </button>
+                            <button [routerLink]="['/cart']" (click)="onReset()" class="button1">back to cart</button>
+                            <button class="button2" type="submit">make an order</button>
                         </div>
                     </div>
                 </div>
