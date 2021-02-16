@@ -138,4 +138,9 @@ export class CartService {
         }
         this.change.emit(this.itemsInCart);
     }
+
+    emptyCart(): void {
+        sessionStorage.removeItem('cart');
+        this.getItemsInCart();
+    }
 }

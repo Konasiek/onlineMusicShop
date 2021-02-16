@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {OrderService} from "../_services/order.service";
 import {TokenStorageService} from "../_services/token-storage.service";
+import {CartService} from "../_services/cart.service";
 
 @Component({
     selector: 'app-order',
@@ -20,13 +21,19 @@ export class OrderComponent implements OnInit {
     pageSize = 5;
 
     constructor(private orderService: OrderService,
-                private tokenStorageService: TokenStorageService) {
+                private tokenStorageService: TokenStorageService,
+                private cartService: CartService) {
     }
 
     ngOnInit(): void {
         this.userObj = Object.values(this.tokenStorageService.getUser());
         this.user_id = this.userObj[0];
+        this.cartService.retriveCart();
         this.retrieveOrders();
+        if (sessionStorage.getItem('reloadOrder')) {
+            sessionStorage.removeItem('reloadOrder');
+            window.location.reload();
+        }
     }
 
     getRequestParams(user_id, page, pageSize): any {

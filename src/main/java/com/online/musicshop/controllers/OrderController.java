@@ -1,9 +1,12 @@
 package com.online.musicshop.controllers;
 
+import com.online.musicshop.models.Cart;
 import com.online.musicshop.models.Order;
-import com.online.musicshop.models.ProductInStock;
+import com.online.musicshop.payload.request.OrderRequest;
+import com.online.musicshop.models.ProductInOrder;
+import com.online.musicshop.repository.CartRepository;
 import com.online.musicshop.repository.OrderRepository;
-import com.online.musicshop.repository.ProductInStockRepository;
+import com.online.musicshop.repository.ProductInOrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -21,8 +24,19 @@ import java.util.Map;
 @RequestMapping("/api/order")
 public class OrderController {
 
+
+    private OrderRepository orderRepository;
+    private CartRepository cartRepository;
+    private ProductInOrderRepository productInOrderRepository;
+
     @Autowired
-    OrderRepository orderRepository;
+    public OrderController(OrderRepository orderRepository,
+                           CartRepository cartRepository,
+                           ProductInOrderRepository productInOrderRepository) {
+        this.orderRepository = orderRepository;
+        this.cartRepository = cartRepository;
+        this.productInOrderRepository = productInOrderRepository;
+    }
 
     @GetMapping
     public ResponseEntity<Map<String, Object>> allOrders(
@@ -48,6 +62,34 @@ public class OrderController {
         } catch (Exception e) {
 
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @PostMapping
+    public ResponseEntity saveOrder(@RequestBody OrderRequest orderRequest) {
+
+        try {
+            // receiving data from request
+            List<ProductInOrder> productInOrders = orderRequest.getProductsInOrder();
+            Order order = orderRequest.getOrder();
+
+            // saving products in db and storing them in local variable
+            List<ProductInOrder> lastAddedProducts = productInOrderRepository.saveAll(productInOrders);
+
+            // saving cart and storing it in local variable
+            Cart lastAddedCart = cartRepository.save(order.getCart());
+
+            // for every added product saving id's in cart_products table
+            lastAddedProducts.forEach(product ->
+                    cartRepository.saveInCart_Products(lastAddedCart.getId(), product.getId()));
+
+            // passing used cart_id to order
+            order.getCart().setId(lastAddedCart.getId());
+            orderRepository.save(order);
+
+            return new ResponseEntity(null, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 }

@@ -1,6 +1,15 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {CartService} from "../_services/cart.service";
+import {OrderService} from "../_services/order.service";
+import {Category} from "../model/Category";
+import {ProductInOrder} from "../model/ProductInOrder";
+import {UserInOrder} from "../model/UserInOrder";
+import {CartInOrder} from "../model/CartInOrder";
+import {Order} from "../model/Order";
+import {OrderRequest} from "../model/OrderRequest";
+import {TokenStorageService} from "../_services/token-storage.service";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -11,6 +20,9 @@ import {CartService} from "../_services/cart.service";
 export class ShippingComponent implements OnInit {
 
     shippingForm: FormGroup;
+
+    orderRequest;
+
     submitted = false;
 
     cart: string[] = [];
@@ -19,13 +31,16 @@ export class ShippingComponent implements OnInit {
 
     constructor(
         private formBuilder: FormBuilder,
-        private cartService: CartService) {
+        private cartService: CartService,
+        private orderService: OrderService,
+        private tokenStorageService: TokenStorageService,
+        private router: Router) {
     }
 
     ngOnInit(): void {
 
         this.shippingForm = this.formBuilder.group({
-            bldg_unit: ['', [Validators.required, Validators.pattern(/^[^A-Za-z]+$/)]],
+            bldg_unit: ['', Validators.required],
             street: ['', [Validators.required, Validators.pattern(/^([^0-9]*)$/)]],
             city: ['', [Validators.required, Validators.pattern(/^([^0-9]*)$/)]],
             country: ['', [Validators.required, Validators.pattern(/^([^0-9]*)$/)]],
@@ -44,15 +59,41 @@ export class ShippingComponent implements OnInit {
         return this.shippingForm.controls;
     }
 
-    onSubmit() {
+    async onSubmit() {
         this.submitted = true;
 
         if (this.shippingForm.invalid) {
-            alert('please correct shipping details')
+            alert('please correct shipping details');
             return;
-        }
+        } else {
+            alert('Order has been placed');
 
-        alert('Order has been placed')
+            let listOfProducts: Array<ProductInOrder> = this.cartService.retriveCart();
+
+            let currentUser = this.tokenStorageService.getUser();
+            let userInOrder: UserInOrder = new UserInOrder(currentUser.id);
+
+            let cartInOrder: CartInOrder = new CartInOrder();
+            let order: Order = new Order(
+                this.shippingForm.get('bldg_unit').value,
+                this.shippingForm.get('street').value,
+                this.shippingForm.get('city').value,
+                this.shippingForm.get('country').value,
+                this.shippingForm.get('contactPerson').value,
+                this.shippingForm.get('postal').value,
+                this.shippingForm.get('email').value,
+                this.shippingForm.get('phone').value,
+                userInOrder,
+                cartInOrder);
+
+            this.orderRequest = new OrderRequest(listOfProducts, order);
+            this.orderService.add(this.orderRequest).subscribe();
+
+            this.cartService.emptyCart();
+            // bad practise ;(
+            sessionStorage.setItem('reloadOrder', '1');
+            this.router.navigate(['/order']);
+        }
     }
 
     onReset() {

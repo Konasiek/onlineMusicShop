@@ -1,6 +1,12 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
+import {ProductInOrder} from "../model/ProductInOrder";
+import {Order} from "../model/Order";
+import {OrderRequest} from "../model/OrderRequest";
+import {Category} from "../model/Category";
+import {UserInOrder} from "../model/UserInOrder";
+import {CartInOrder} from "../model/CartInOrder";
 
 const baseUrl = 'http://localhost:8080/api/order';
 
@@ -16,6 +22,13 @@ export class OrderService {
         return this.http.get(baseUrl, {params});
     }
 
-    //add more crud method later
-}
+    add(orderRequest: OrderRequest): Observable<any> {
 
+        const httpOptions = {
+            headers: new HttpHeaders({
+                'Content-Type': 'application/json'
+            })
+        };
+        return this.http.post<any>(baseUrl, orderRequest, httpOptions);
+    }
+}

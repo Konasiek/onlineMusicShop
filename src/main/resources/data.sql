@@ -44,7 +44,7 @@ INSERT INTO cart_products (cart_id, product_id) VALUES (10000001, 100001);
 INSERT INTO cart_products (cart_id, product_id) VALUES (10000001, 100002);
 INSERT INTO cart_products (cart_id, product_id) VALUES (10000002, 100003);
 INSERT INTO cart_products (cart_id, product_id) VALUES (10000002, 100004);
-INSERT INTO cart_products (cart_id, product_id) VALUES (10000003, 100005);
+INSERT INTO cart_products (cart_id, product_id) VALUES (10000003, 100005);      
 
 INSERT INTO orders (id, building_number_and_apartment, city, contact_person, country, email, phone, post_code, street, cart_id, user_id) VALUES (10000001, "5", "Boston", "Ken Adams", "USA", "kenadams12@gmail.com", "5067675567", "324-454", "Main", 10000001, 100000001);
 INSERT INTO orders (id, building_number_and_apartment, city, contact_person, country, email, phone, post_code, street, cart_id, user_id) VALUES (10000003, "5", "Boston", "Ken Adams", "USA", "kenadams12@gmail.com", "5067675567", "324-454", "Main", 10000003, 100000001);
