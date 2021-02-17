@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, HostBinding, HostListener, OnInit} from '@angular/core';
+import {Component, HostBinding, HostListener, OnInit} from '@angular/core';
 import {ProductService} from "../_services/product.service";
 import {CategoryService} from "../_services/category.service";
 import {CartService} from "../_services/cart.service";
@@ -12,7 +12,7 @@ export class ProductComponent implements OnInit {
 
     products: any;
     currentIndex = -1;
-    modelName = '';
+    searchPhrase = '';
 
     page = 1;
     count = 0;
@@ -34,14 +34,14 @@ export class ProductComponent implements OnInit {
         this.retrieveProducts();
     }
 
-    getRequestParams(category_Id, searchModelName, page, pageSize): any {
+    getRequestParams(category_Id, searchPhrase, page, pageSize): any {
         let params = {};
 
         if (category_Id) {
             params['category_Id'] = category_Id;
         }
-        if (searchModelName) {
-            params['modelName'] = searchModelName;
+        if (searchPhrase) {
+            params['searchPhrase'] = searchPhrase;
         }
         if (page) {
             params['page'] = page - 1;
@@ -53,7 +53,7 @@ export class ProductComponent implements OnInit {
     }
 
     retrieveProducts(): void {
-        const params = this.getRequestParams(this.category_Id, this.modelName, this.page, this.pageSize);
+        const params = this.getRequestParams(this.category_Id, this.searchPhrase, this.page, this.pageSize);
 
         this.productService.getAll(params)
             .subscribe(

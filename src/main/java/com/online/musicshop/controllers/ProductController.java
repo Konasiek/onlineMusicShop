@@ -29,7 +29,7 @@ public class ProductController {
     @GetMapping
     public ResponseEntity<Map<String, Object>> allProducts(
             @RequestParam(required = false) Long category_Id,
-            @RequestParam(required = false) String modelName,
+            @RequestParam(required = false) String searchPhrase,
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "3") int size) {
 
@@ -39,14 +39,21 @@ public class ProductController {
 
             Page<ProductInStock> pageProducts;
 
+            String modelName = searchPhrase;
+            String producerName = searchPhrase;
+
             if (modelName != null && category_Id != null) {
-                pageProducts = productInStockRepository.findByCategory_IdAndModelNameContaining(category_Id, modelName, paging);
+                pageProducts = productInStockRepository
+                        .findByCategory_IdAndModelNameContainingOrProducerNameContaining(category_Id, modelName, producerName, paging);
             } else if (category_Id != null) {
-                pageProducts = productInStockRepository.findByCategory_Id(category_Id, paging);
+                pageProducts = productInStockRepository
+                        .findByCategory_Id(category_Id, paging);
             } else if (modelName != null) {
-                pageProducts = productInStockRepository.findByModelNameContaining(modelName, paging);
+                pageProducts = productInStockRepository
+                        .findByModelNameContainingOrProducerNameContaining(modelName, producerName, paging);
             } else {
-                pageProducts = productInStockRepository.findAll(paging);
+                pageProducts = productInStockRepository
+                        .findAll(paging);
             }
 
             products = pageProducts.getContent();
