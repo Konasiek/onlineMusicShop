@@ -85,9 +85,13 @@ export class ProductComponent implements OnInit {
         }
     }
     @HostListener('addToCart')
-    addToCart(product): void {
-        // console.log("added to cart: " + JSON.stringify(product));
-        this.cartService.addToCart(product, 1);
+    addToCart(product: any): void {
 
+        console.log(product.stock);
+        if (product.stock !== 0) {
+            this.cartService.addToCart(product, 1);
+        } else {
+            alert("product is out of stock");
+        }
     }
 }
