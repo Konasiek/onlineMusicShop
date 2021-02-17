@@ -10,6 +10,7 @@ import {Order} from "../model/Order";
 import {OrderRequest} from "../model/OrderRequest";
 import {TokenStorageService} from "../_services/token-storage.service";
 import {Router} from "@angular/router";
+import {ProductService} from "../_services/product.service";
 
 
 @Component({
@@ -34,6 +35,7 @@ export class ShippingComponent implements OnInit {
         private cartService: CartService,
         private orderService: OrderService,
         private tokenStorageService: TokenStorageService,
+        private productService: ProductService,
         private router: Router) {
     }
 
@@ -59,15 +61,13 @@ export class ShippingComponent implements OnInit {
         return this.shippingForm.controls;
     }
 
-    async onSubmit() {
+    onSubmit() {
         this.submitted = true;
 
         if (this.shippingForm.invalid) {
             alert('please correct shipping details');
             return;
         } else {
-            alert('Order has been placed');
-
             let listOfProducts: Array<ProductInOrder> = this.cartService.retriveCart();
 
             let currentUser = this.tokenStorageService.getUser();
@@ -89,8 +89,11 @@ export class ShippingComponent implements OnInit {
             this.orderRequest = new OrderRequest(listOfProducts, order);
             this.orderService.add(this.orderRequest).subscribe();
 
+            // reduce quantity of items in stock
+            this.productService.updateQuantity(listOfProducts).subscribe();
+
             this.cartService.emptyCart();
-            // bad practise ;(
+            // bad practise
             sessionStorage.setItem('reloadOrder', '1');
             this.router.navigate(['/order']);
         }

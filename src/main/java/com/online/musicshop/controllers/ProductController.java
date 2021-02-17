@@ -1,5 +1,6 @@
 package com.online.musicshop.controllers;
 
+import com.online.musicshop.models.ProductInOrder;
 import com.online.musicshop.models.ProductInStock;
 import com.online.musicshop.repository.ProductInStockRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,18 +12,19 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/api/product")
 public class ProductController {
 
+    private ProductInStockRepository productInStockRepository;
+
     @Autowired
-    ProductInStockRepository productInStockRepository;
+    public ProductController(ProductInStockRepository productInStockRepository) {
+        this.productInStockRepository = productInStockRepository;
+    }
 
     @GetMapping
     public ResponseEntity<Map<String, Object>> allProducts(
@@ -57,8 +59,24 @@ public class ProductController {
 
             return new ResponseEntity<>(response, HttpStatus.OK);
         } catch (Exception e) {
-
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @PostMapping
+    public ResponseEntity updateProducts(@RequestBody List<ProductInOrder> productsToUpdate) {
+
+        try {
+            for (int i = 0; i < productsToUpdate.size(); i++) {
+                Optional<ProductInStock> productToUpdate = productInStockRepository.findById(productsToUpdate.get(i).getId());
+                Long quantity = productToUpdate.get().getStock();
+                quantity -= productsToUpdate.get(i).getQuantity();
+                productInStockRepository.updateQuantity(productsToUpdate.get(i).getId(), quantity);
+            }
+
+            return new ResponseEntity(null, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 }

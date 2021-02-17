@@ -16,7 +16,7 @@ public class ProductInStock {
 
     private String imageURL;
 
-    private Integer stock;
+    private Long stock;
 
     private Long price;
 
@@ -58,11 +58,11 @@ public class ProductInStock {
         this.imageURL = imageURL;
     }
 
-    public Integer getStock() {
+    public Long getStock() {
         return stock;
     }
 
-    public void setStock(Integer stock) {
+    public void setStock(Long stock) {
         this.stock = stock;
     }
 

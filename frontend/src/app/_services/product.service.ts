@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
+import {ProductInOrder} from "../model/ProductInOrder";
 
 const baseUrl = 'http://localhost:8080/api/product';
 
@@ -16,5 +17,7 @@ export class ProductService {
         return this.http.get(baseUrl, {params});
     }
 
-    //add more crud method later
+    updateQuantity(productsToUpdate: Array<ProductInOrder>): Observable<any> {
+        return this.http.post<any>(baseUrl, productsToUpdate);
+    }
 }

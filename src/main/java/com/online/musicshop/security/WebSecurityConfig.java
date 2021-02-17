@@ -28,6 +28,7 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry;
 		// jsr250Enabled = true,
 		prePostEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+
 	@Autowired
 	UserDetailsServiceImpl userDetailsService;
 
@@ -68,7 +69,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		http.cors().and().csrf().disable()
 			.exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
 			.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
-			.authorizeRequests().antMatchers("/api/auth/**", "/api/order**").permitAll()
+				// to change data
+			.authorizeRequests().antMatchers("/api/auth/**", "/api/order**", "/api/product**").permitAll()
+				// to read data
 			.antMatchers("/api/test/**", "/api/product**", "/api/order**").permitAll()
 			.anyRequest().authenticated();
 

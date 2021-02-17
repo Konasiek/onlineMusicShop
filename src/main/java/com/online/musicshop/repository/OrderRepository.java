@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 public interface OrderRepository extends JpaRepository<Order, Long> {
 
 //    @Query(value = "SELECT * FROM orders WHERE (user_id = ?1)", nativeQuery = true)
-    Page<Order> findByUser_Id(Long user_id, Pageable pageable);
+    Page<Order> findByUser_IdOrderByIdDesc(Long user_id, Pageable pageable);
 
     Page<Order> findAll(Pageable pageable);
 }

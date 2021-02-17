@@ -49,7 +49,7 @@ public class OrderController {
             Pageable paging = PageRequest.of(page, size);
 
             Page<Order> pageOrders;
-            pageOrders = orderRepository.findByUser_Id(user_id, paging);
+            pageOrders = orderRepository.findByUser_IdOrderByIdDesc(user_id, paging);
             orders = pageOrders.getContent();
 
             Map<String, Object> response = new HashMap<>();
