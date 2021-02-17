@@ -65,7 +65,6 @@ export class ShippingComponent implements OnInit {
         this.submitted = true;
 
         if (this.shippingForm.invalid) {
-            alert('please correct shipping details');
             return;
         } else {
             let listOfProducts: Array<ProductInOrder> = this.cartService.retriveCart();

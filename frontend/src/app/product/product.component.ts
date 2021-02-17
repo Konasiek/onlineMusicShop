@@ -61,6 +61,10 @@ export class ProductComponent implements OnInit {
                     const {products, totalItems} = response;
                     this.products = products;
                     this.count = totalItems;
+
+                    if (totalItems <= this.pageSize) {
+                        this.handlePageChange(1);
+                    }
                     console.log(response);
                 },
                 error => {
