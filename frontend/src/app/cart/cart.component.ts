@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {CartService} from "../_services/cart.service";
+import {Router} from "@angular/router";
+import {TokenStorageService} from "../_services/token-storage.service";
 
 @Component({
     selector: 'app-cart',
@@ -12,10 +14,15 @@ export class CartComponent implements OnInit {
     grandTotal: number = 0.00;
     hasItems: boolean;
 
-    constructor(private cartService: CartService) {
+    isLoggedIn = false;
+
+    constructor(private cartService: CartService,
+                private router: Router,
+                private tokenStorageService: TokenStorageService) {
     }
 
     ngOnInit(): void {
+        this.isLoggedIn = !!this.tokenStorageService.getToken();
         if (this.cartService.retriveCart()) {
             this.initCart();
         }
@@ -40,5 +47,13 @@ export class CartComponent implements OnInit {
     removeItem(id: number) {
         this.cart = this.cartService.removeItem(id);
         this.initCart();
+    }
+
+    goToShipping(): void {
+        if (this.isLoggedIn) {
+            this.router.navigate(['/shipping']);
+        } else {
+            this.router.navigate(['/login']);
+        }
     }
 }

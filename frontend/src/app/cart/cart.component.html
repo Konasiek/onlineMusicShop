@@ -24,6 +24,6 @@
             </li>
         </ul>
         <div id="grandTotal" *ngIf="cart.length !== 0">Total cost: ${{grandTotal}}</div>
-        <div id="shipping" *ngIf="cart.length !== 0"><div id="shippingOuter"><button class="button" routerLink="/shipping">go to shipping</button></div></div>
+        <div id="shipping" *ngIf="cart.length !== 0"><div id="shippingOuter"><button class="button" (click)="goToShipping()">go to shipping</button></div></div>
     </div>
 </div>

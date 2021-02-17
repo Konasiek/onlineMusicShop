@@ -122,11 +122,11 @@
                 <div class="cartInfo">
                     <ul class="list-group">
                         <li class="list-group-item" *ngFor="let product of cart">
-                            <div id="producerName"><p>{{ product.producerName }}</p></div>
-                            <div id="modelName"><p>{{ product.modelName }}</p></div>
-                            <div id="price"><p>${{ product.price }}</p></div>
-                            <div id="quantity"><p>x{{ product.quantity }}</p></div>
-                            <div id="subTotal"><p>= ${{ product.quantity * product.price }}</p></div>
+                            <div id="producerName"><p>{{ product["producerName"] }}</p></div>
+                            <div id="modelName"><p>{{ product["modelName"] }}</p></div>
+                            <div id="price"><p>${{ product["price"] }}</p></div>
+                            <div id="quantity"><p>x{{ product["quantity"] }}</p></div>
+                            <div id="subTotal"><p>= ${{ product["quantity"] * product["price"] }}</p></div>
                         </li>
                     </ul>
                 </div>

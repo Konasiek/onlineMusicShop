@@ -3,13 +3,10 @@
         <a href="/product" class="navbar-brand">musicShop</a>
         <ul class="navbar-nav mr-auto" routerLinkActive="active">
             <li class="nav-item" *ngIf="showAdminBoard">
-                <a href="/admin" class="nav-link" routerLink="admin">admin Board</a>
+                <a class="nav-link" routerLink="admin">admin board</a>
             </li>
             <li class="nav-item" *ngIf="showModeratorBoard">
-                <a href="/mod" class="nav-link" routerLink="mod">moderator Board</a>
-            </li>
-            <li class="nav-item">
-                <a href="/user" class="nav-link" *ngIf="isLoggedIn" routerLink="user">user</a>
+                <a class="nav-link" routerLink="mod">moderator board</a>
             </li>
             <li class="nav-item" (click)="changeCategory(1)">
                 <a class="nav-link" routerLink="product">guitars</a>
@@ -22,32 +19,29 @@
             </li>
         </ul>
 
-        <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">
+        <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <a href="/register" class="nav-link" routerLink="register">sign Up</a>
-            </li>
-            <li class="nav-item">
-                <a href="/login" class="nav-link" routerLink="login">log in</a>
-            </li>
-        </ul>
-
-        <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn">
-            <li class="nav-item">
-                <a href="/cart" class="nav-link" routerLink="cart" *ngIf="itemsInCart !== 0 && itemsInCart !==undefined">
+                <a class="nav-link" routerLink="cart" *ngIf="itemsInCart !== 0 && itemsInCart !== undefined">
                     <div id="cartWithItems">
                         <img src="../assets/shoppingCartWithItems.png" class="shoppingCart">
                         <div id="numberOfItems">{{itemsInCart}}</div>
                     </div>
                 </a>
-                <a href="/cart" class="nav-link" routerLink="cart" *ngIf="(itemsInCart === 0 || itemsInCart===undefined)">
+                <a class="nav-link" routerLink="cart" *ngIf="(itemsInCart === 0 || itemsInCart === undefined)">
                     <img src="../assets/shoppingCart.png" class="shoppingCart">
                 </a>
             </li>
-            <li class="nav-item">
-                <a href="/profile" class="nav-link" routerLink="profile">{{ username }}</a>
+            <li class="nav-item" *ngIf="isLoggedIn">
+                <a class="nav-link" routerLink="profile">{{ username }}</a>
             </li>
-            <li class="nav-item">
-                <a href class="nav-link" (click)="logout()">log out</a>
+            <li class="nav-item" *ngIf="!isLoggedIn">
+                <a class="nav-link" routerLink="register">sign up</a>
+            </li>
+            <li class="nav-item" *ngIf="!isLoggedIn">
+                <a class="nav-link" routerLink="login">log in</a>
+            </li>
+            <li class="nav-item" *ngIf="isLoggedIn">
+                <a class="nav-link" (click)="logout()">log out</a>
             </li>
         </ul>
     </nav>

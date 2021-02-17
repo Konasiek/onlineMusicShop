@@ -24,3 +24,6 @@
     color: black;
     font-weight: bolder;
 }
+.nav-link {
+    cursor: pointer;
+}

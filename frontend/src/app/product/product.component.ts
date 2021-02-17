@@ -84,10 +84,9 @@ export class ProductComponent implements OnInit {
             this.retrieveProducts();
         }
     }
+
     @HostListener('addToCart')
     addToCart(product: any): void {
-
-        console.log(product.stock);
         if (product.stock !== 0) {
             this.cartService.addToCart(product, 1);
         } else {

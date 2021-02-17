@@ -22,7 +22,7 @@ export class ShippingComponent implements OnInit {
 
     shippingForm: FormGroup;
 
-    orderRequest;
+    orderRequest: OrderRequest;
 
     submitted = false;
 
