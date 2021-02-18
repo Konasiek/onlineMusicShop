@@ -18,8 +18,8 @@ export class ProductComponent implements OnInit {
     count = 0;
     pageSize = 5;
     pageSizes = [5, 10, 50];
-    @HostBinding('class.category_Id')
-    category_Id = 0;
+    @HostBinding('class.categoryId')
+    categoryId = 0;
 
     constructor(private productService: ProductService,
                 private categoryService: CategoryService,
@@ -28,17 +28,17 @@ export class ProductComponent implements OnInit {
 
     ngOnInit(): void {
         this.categoryService.change.subscribe(a => {
-            this.category_Id = a;
+            this.categoryId = a;
             this.retrieveProducts();
         });
         this.retrieveProducts();
     }
 
-    getRequestParams(category_Id, searchPhrase, page, pageSize): any {
+    getRequestParams(categoryId, searchPhrase, page, pageSize): any {
         let params = {};
 
-        if (category_Id) {
-            params['category_Id'] = category_Id;
+        if (categoryId) {
+            params['categoryId'] = categoryId;
         }
         if (searchPhrase) {
             params['searchPhrase'] = searchPhrase;
@@ -53,7 +53,7 @@ export class ProductComponent implements OnInit {
     }
 
     retrieveProducts(): void {
-        const params = this.getRequestParams(this.category_Id, this.searchPhrase, this.page, this.pageSize);
+        const params = this.getRequestParams(this.categoryId, this.searchPhrase, this.page, this.pageSize);
 
         this.productService.getAll(params)
             .subscribe(

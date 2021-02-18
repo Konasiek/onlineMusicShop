@@ -25,7 +25,7 @@
                 <div id="addToCart"><div id="outerButton"><button class="button" (click)="addToCart(product)">add to cart</button></div></div>
             </li>
         </ul>
-        <div class="itemsOnPage">Items per Page:
+        <div class="itemsOnPage">Items per page:
             <select (change)="handlePageSizeChange($event)"><option *ngFor="let size of pageSizes" [ngValue]="size">{{ size }}</option></select>
         </div>
         <div class="pagination">

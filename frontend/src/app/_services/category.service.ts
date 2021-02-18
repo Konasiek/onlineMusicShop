@@ -5,7 +5,7 @@ import {EventEmitter, Injectable, Output} from '@angular/core';
 })
 export class CategoryService{
 
-    category_Id;
+    categoryId;
 
     constructor() {
     }
@@ -13,8 +13,8 @@ export class CategoryService{
     @Output () change: EventEmitter<number> = new EventEmitter<number>();
 
     changeCategory(category) {
-        this.category_Id = category;
-        this.change.emit(this.category_Id);
+        this.categoryId = category;
+        this.change.emit(this.categoryId);
     }
 
 }

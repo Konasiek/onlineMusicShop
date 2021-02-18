@@ -18,9 +18,9 @@ public interface ProductInStockRepository extends JpaRepository<ProductInStock, 
 
     Page<ProductInStock> findByModelNameContainingOrProducerNameContaining(String modelName, String producerName, Pageable pageable);
 
-    Page<ProductInStock> findByCategory_Id(Long category_Id, Pageable pageable);
+    Page<ProductInStock> findByCategoryId(Long categoryId, Pageable pageable);
 
-    Page<ProductInStock> findByCategory_IdAndModelNameContainingOrProducerNameContaining(Long category_Id, String modelName, String producerName, Pageable pageable);
+    Page<ProductInStock> findByCategoryIdAndModelNameContainingOrProducerNameContaining(Long categoryId, String modelName, String producerName, Pageable pageable);
 
     Optional<ProductInStock> findById(Long id);
 

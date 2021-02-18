@@ -28,7 +28,7 @@ public class ProductController {
 
     @GetMapping
     public ResponseEntity<Map<String, Object>> allProducts(
-            @RequestParam(required = false) Long category_Id,
+            @RequestParam(required = false) Long categoryId,
             @RequestParam(required = false) String searchPhrase,
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "3") int size) {
@@ -42,12 +42,12 @@ public class ProductController {
             String modelName = searchPhrase;
             String producerName = searchPhrase;
 
-            if (modelName != null && category_Id != null) {
+            if (modelName != null && categoryId != null) {
                 pageProducts = productInStockRepository
-                        .findByCategory_IdAndModelNameContainingOrProducerNameContaining(category_Id, modelName, producerName, paging);
-            } else if (category_Id != null) {
+                        .findByCategoryIdAndModelNameContainingOrProducerNameContaining(categoryId, modelName, producerName, paging);
+            } else if (categoryId != null) {
                 pageProducts = productInStockRepository
-                        .findByCategory_Id(category_Id, paging);
+                        .findByCategoryId(categoryId, paging);
             } else if (modelName != null) {
                 pageProducts = productInStockRepository
                         .findByModelNameContainingOrProducerNameContaining(modelName, producerName, paging);

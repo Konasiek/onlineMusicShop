@@ -44,7 +44,7 @@ export class AppComponent implements OnInit {
     }
 
     @HostListener('changeCategory')
-    changeCategory(category_Id): void {
-        this.categoryService.changeCategory(category_Id);
+    changeCategory(categoryId): void {
+        this.categoryService.changeCategory(categoryId);
     }
 }
