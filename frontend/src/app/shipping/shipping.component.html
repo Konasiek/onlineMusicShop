@@ -16,8 +16,11 @@
                                        [ngClass]="{'is-invalid': submitted && f.bldg_unit.errors}"/>
                             </div>
                             <div *ngIf="submitted">
-                                <div class="fieldError" *ngIf="f.bldg_unit.errors?.required">building number is required</div>
-                                <div class="fieldError" *ngIf="f.bldg_unit.errors?.pattern">letters are not allowed</div>
+                                <div class="fieldError" *ngIf="f.bldg_unit.errors?.required">building number is
+                                    required
+                                </div>
+                                <div class="fieldError" *ngIf="f.bldg_unit.errors?.pattern">letters are not allowed
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -112,10 +115,13 @@
                             <div *ngIf="submitted && f.phone.errors">
                                 <div class="fieldError" *ngIf="f.phone.errors?.required">phone number is required</div>
                                 <div class="fieldError" *ngIf="f.phone.errors?.pattern">letters are not allowed</div>
-                                <div class="fieldError" *ngIf="f.phone.errors?.minlength">minimum number of digits is 9</div>
+                                <div class="fieldError" *ngIf="f.phone.errors?.minlength">minimum number of digits is
+                                    9
+                                </div>
                             </div>
                         </div>
                     </div>
+                    <div id="distant"></div>
                 </div>
             </div>
             <div class="rightButtons">
@@ -143,4 +149,3 @@
         </form>
     </div>
 </div>
-

@@ -125,3 +125,8 @@
     width: 100%;
     font-size: x-small;
 }
+
+#distant {
+    height: 100px;
+    background: cadetblue;
+}
