@@ -1,4 +1,3 @@
-
 INSERT INTO category (id, name) VALUES (1, "guitars");
 INSERT INTO category (id, name) VALUES (2, "drums");
 INSERT INTO category (id, name) VALUES (3, "keys");
