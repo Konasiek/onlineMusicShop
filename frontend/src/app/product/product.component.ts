@@ -63,7 +63,6 @@ export class ProductComponent implements OnInit {
                     this.count = totalItems;
 
                     if (totalItems <= this.pageSize) {
-                        this.handlePageChange(1);
                     }
                     console.log(response);
                 },
@@ -83,10 +82,9 @@ export class ProductComponent implements OnInit {
         this.retrieveProducts();
     }
 
-    onKeydown(event) {
-        if (event.key === "Enter") {
-            this.retrieveProducts();
-        }
+    onSearchChange(): void {
+        this.page = 1;
+        this.retrieveProducts();
     }
 
     @HostListener('addToCart')

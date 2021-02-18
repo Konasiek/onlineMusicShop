@@ -44,7 +44,7 @@ public class ProductController {
 
             if (modelName != null && categoryId != null) {
                 pageProducts = productInStockRepository
-                        .findByCategoryIdAndModelNameContainingOrProducerNameContaining(categoryId, modelName, producerName, paging);
+                        .findByCategoryIdAndModelNameContainingOrCategoryIdAndProducerNameContaining(categoryId, modelName, categoryId, producerName, paging);
             } else if (categoryId != null) {
                 pageProducts = productInStockRepository
                         .findByCategoryId(categoryId, paging);
@@ -80,7 +80,6 @@ public class ProductController {
                 quantity -= productsToUpdate.get(i).getQuantity();
                 productInStockRepository.updateQuantity(productsToUpdate.get(i).getId(), quantity);
             }
-
             return new ResponseEntity(null, HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity(null, HttpStatus.INTERNAL_SERVER_ERROR);
