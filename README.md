@@ -37,7 +37,7 @@
 
 ## Database Schemaa:
 
-![db schema](https://ibb.co/rvqvzCm)
+![db schema](backend\db_schema_diag.png)
 
 ## Instalation:
 	- Install mySQL "https://dev.mysql.com/downloads/installer/"
