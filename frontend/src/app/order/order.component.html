@@ -11,7 +11,7 @@
                         <div id="modelName">{{productInOrder.modelName}}</div>
                         <div id="producerName">{{productInOrder.producerName}}</div>
                         <div id="quantity">x{{productInOrder.quantity}}</div>
-                        <div id="productPrice">${{productInOrder.price}}</div>
+                        <div id="productPrice">{{productInOrder.price | currency}}</div>
                     </li>
                 </ul>
             </li>
