@@ -70,9 +70,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			.exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
 			.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
 				// to change data
-			.authorizeRequests().antMatchers("/api/auth/**", "/api/order**", "/api/product**").permitAll()
+			.authorizeRequests().antMatchers("/api/auth/**", "/api/order**", "/api/product**", "**").permitAll()
 				// to read data
-			.antMatchers("/api/test/**", "/api/product**", "/api/order**").permitAll()
+			.antMatchers("/api/test/**", "/api/product**", "/api/order**", "/product**", "**").permitAll()
 			.anyRequest().authenticated();
 
 		http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
