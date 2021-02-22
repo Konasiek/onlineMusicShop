@@ -2,10 +2,10 @@
 
 ### Live demo: >TBA<
 
-## Technology
+## Technology:
 
 #### Backend:
-	Java 11
+	Java 8
 	SpringBoot 2.4
 	SpringSecurity
 	SpringData JPA
@@ -36,7 +36,7 @@
 	Captcha confirmation during registration
 	Other minor functionality
 
-## Database Schemaa:
+## Database Schema:
 
 ![db schema](/backend/db_schema_diag.png)
 
