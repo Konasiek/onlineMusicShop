@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="76965fe7-555e-4d1a-ace9-8a4d89fe37f2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/backend/src/Procfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/online/musicshop/security/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/online/musicshop/security/WebSecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/Procfile" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/Procfile" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/classes/" />
     <ignored path="$PROJECT_DIR$/frontend/node_modules/" />
@@ -99,20 +98,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/backend/src/main/java/com/online/musicshop/security/WebSecurityConfig.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="457">
-              <caret line="80" selection-start-line="80" selection-end-line="80" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/backend/src/Procfile">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="70" lean-forward="true" selection-start-column="70" selection-end-column="70" />
+            <state relative-caret-position="216">
+              <caret line="65" lean-forward="true" selection-start-line="65" selection-end-line="65" />
             </state>
           </provider>
         </entry>
@@ -321,12 +311,12 @@
       <updated>1613680871774</updated>
       <workItem from="1613680877285" duration="840000" />
       <workItem from="1613681788583" duration="78000" />
-      <workItem from="1613681966518" duration="17984000" />
+      <workItem from="1613681966518" duration="18966000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="18902000" />
+    <option name="totallyTimeSpent" value="19884000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
@@ -513,13 +503,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/backend/src/main/java/com/online/musicshop/security/WebSecurityConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="457">
-          <caret line="80" selection-start-line="80" selection-end-line="80" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/backend/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="544">
@@ -530,7 +513,14 @@
     <entry file="file://$PROJECT_DIR$/backend/src/Procfile">
       <provider selected="true" editor-type-id="text-editor">
         <state>
-          <caret column="70" lean-forward="true" selection-start-column="70" selection-end-column="70" />
+          <caret column="58" lean-forward="true" selection-start-column="58" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/src/main/java/com/online/musicshop/security/WebSecurityConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="65" lean-forward="true" selection-start-line="65" selection-end-line="65" />
         </state>
       </provider>
     </entry>
