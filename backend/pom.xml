@@ -15,7 +15,7 @@
     <description>online music shop based on angular, springboot, spring JWT authentication</description>
 
     <properties>
-        <java.version>1.8</java.version>
+        <java.version>11.0.9</java.version>
     </properties>
 
     <dependencies>
