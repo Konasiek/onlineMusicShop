@@ -17,7 +17,7 @@ export class OrderService {
         return this.http.get(baseUrl, {params});
     }
 
-    add(orderRequest: OrderRequest): Observable<any> {
-        return this.http.post<OrderRequest>(baseUrl, orderRequest);
+    async add(orderRequest: OrderRequest): Promise<any> {
+        return await this.http.post<OrderRequest>(baseUrl, orderRequest).toPromise();
     }
 }

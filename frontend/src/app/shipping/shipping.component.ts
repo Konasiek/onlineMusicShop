@@ -61,7 +61,7 @@ export class ShippingComponent implements OnInit {
         return this.shippingForm.controls;
     }
 
-    onSubmit() {
+    async onSubmit() {
         this.submitted = true;
 
         if (this.shippingForm.invalid) {
@@ -86,7 +86,7 @@ export class ShippingComponent implements OnInit {
                 cartInOrder);
 
             this.orderRequest = new OrderRequest(listOfProducts, order);
-            this.orderService.add(this.orderRequest).subscribe();
+            await this.orderService.add(this.orderRequest);
 
             // reduce quantity of items in stock
             this.productService.updateQuantity(listOfProducts).subscribe();
