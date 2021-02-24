@@ -30,10 +30,6 @@ export class OrderComponent implements OnInit {
         this.user_id = this.userObj[0];
         this.cartService.retriveCart();
         this.retrieveOrders();
-        // if (sessionStorage.getItem('reloadOrder')) {
-        //     sessionStorage.removeItem('reloadOrder');
-        //     window.location.reload();
-        // }
     }
 
     getRequestParams(user_id, page, pageSize): any {

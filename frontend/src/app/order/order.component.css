@@ -94,3 +94,8 @@
 #address {
     height: 30px;
 }
+
+#ordersIsEmpty {
+    clear: both;
+    text-align: center;
+}
