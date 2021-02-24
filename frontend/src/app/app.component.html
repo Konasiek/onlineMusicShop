@@ -1,6 +1,6 @@
 <div class="app">
     <nav class="navbar navbar-expand navbar-dark bg-dark">
-        <a href="/product" class="navbar-brand">musicShop</a>
+        <a class="navbar-brand" routerLink="product" (click)="changeCategory(0)">musicShop</a>
         <ul class="navbar-nav mr-auto" routerLinkActive="active">
             <li class="nav-item" *ngIf="showAdminBoard">
                 <a class="nav-link" routerLink="admin">admin board</a>

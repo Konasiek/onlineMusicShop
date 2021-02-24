@@ -141,6 +141,6 @@ export class CartService {
 
     emptyCart(): void {
         sessionStorage.removeItem('cart');
-        this.getItemsInCart();
+        this.itemsInCart = 0;
     }
 }

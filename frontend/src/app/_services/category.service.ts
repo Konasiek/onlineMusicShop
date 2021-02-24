@@ -11,7 +11,6 @@ export class CategoryService{
     }
 
     @Output () change: EventEmitter<number> = new EventEmitter<number>();
-
     changeCategory(category) {
         this.categoryId = category;
         this.change.emit(this.categoryId);

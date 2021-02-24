@@ -92,8 +92,10 @@ export class ShippingComponent implements OnInit {
             this.productService.updateQuantity(listOfProducts).subscribe();
 
             this.cartService.emptyCart();
+            this.cartService.getItemsInCart();
             // bad practise
-            sessionStorage.setItem('reloadOrder', '1');
+            // sessionStorage.setItem('reloadOrder', '1');
+
             this.router.navigate(['/order']);
         }
     }
