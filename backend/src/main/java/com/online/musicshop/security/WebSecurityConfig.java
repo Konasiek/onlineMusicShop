@@ -29,11 +29,15 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry;
 		prePostEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-	@Autowired
-	UserDetailsServiceImpl userDetailsService;
+	private UserDetailsServiceImpl userDetailsService;
+	private AuthEntryPointJwt unauthorizedHandler;
+
 
 	@Autowired
-	private AuthEntryPointJwt unauthorizedHandler;
+	public WebSecurityConfig(UserDetailsServiceImpl userDetailsService, AuthEntryPointJwt unauthorizedHandler) {
+		this.userDetailsService = userDetailsService;
+		this.unauthorizedHandler = unauthorizedHandler;
+	}
 
 	@Bean
 	public AuthTokenFilter authenticationJwtTokenFilter() {
