@@ -3,6 +3,7 @@ package com.online.musicshop.controllers;
 import com.online.musicshop.models.ProductInOrder;
 import com.online.musicshop.models.ProductInStock;
 import com.online.musicshop.repository.ProductInStockRepository;
+import com.online.musicshop.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -19,11 +20,11 @@ import java.util.*;
 @RequestMapping("/api/product")
 public class ProductController {
 
-    private ProductInStockRepository productInStockRepository;
+    private ProductService productService;
 
     @Autowired
-    public ProductController(ProductInStockRepository productInStockRepository) {
-        this.productInStockRepository = productInStockRepository;
+    public ProductController(ProductService productService) {
+        this.productService = productService;
     }
 
     @GetMapping
@@ -43,16 +44,16 @@ public class ProductController {
             String producerName = searchPhrase;
 
             if (modelName != null && categoryId != null) {
-                pageProducts = productInStockRepository
+                pageProducts = productService
                         .findByCategoryIdAndModelNameContainingOrCategoryIdAndProducerNameContaining(categoryId, modelName, categoryId, producerName, paging);
             } else if (categoryId != null) {
-                pageProducts = productInStockRepository
+                pageProducts = productService
                         .findByCategoryId(categoryId, paging);
             } else if (modelName != null) {
-                pageProducts = productInStockRepository
+                pageProducts = productService
                         .findByModelNameContainingOrProducerNameContaining(modelName, producerName, paging);
             } else {
-                pageProducts = productInStockRepository
+                pageProducts = productService
                         .findAll(paging);
             }
 
@@ -75,10 +76,10 @@ public class ProductController {
 
         try {
             for (int i = 0; i < productsToUpdate.size(); i++) {
-                Optional<ProductInStock> productToUpdate = productInStockRepository.findById(productsToUpdate.get(i).getId());
+                Optional<ProductInStock> productToUpdate = productService.findById(productsToUpdate.get(i).getId());
                 Long quantity = productToUpdate.get().getStock();
                 quantity -= productsToUpdate.get(i).getQuantity();
-                productInStockRepository.updateQuantity(productsToUpdate.get(i).getId(), quantity);
+                productService.updateQuantity(productsToUpdate.get(i).getId(), quantity);
             }
             return new ResponseEntity(null, HttpStatus.OK);
         } catch (Exception e) {
