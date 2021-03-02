@@ -4,9 +4,9 @@ import com.online.musicshop.models.Cart;
 import com.online.musicshop.models.Order;
 import com.online.musicshop.payload.request.OrderRequest;
 import com.online.musicshop.models.ProductInOrder;
-import com.online.musicshop.repository.CartRepository;
-import com.online.musicshop.repository.OrderRepository;
-import com.online.musicshop.repository.ProductInOrderRepository;
+import com.online.musicshop.services.CartService;
+import com.online.musicshop.services.OrderService;
+import com.online.musicshop.services.ProductInOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -24,18 +24,17 @@ import java.util.Map;
 @RequestMapping("/api/order")
 public class OrderController {
 
-
-    private OrderRepository orderRepository;
-    private CartRepository cartRepository;
-    private ProductInOrderRepository productInOrderRepository;
+    private OrderService orderService;
+    private CartService cartService;
+    private ProductInOrderService productInOrderService;
 
     @Autowired
-    public OrderController(OrderRepository orderRepository,
-                           CartRepository cartRepository,
-                           ProductInOrderRepository productInOrderRepository) {
-        this.orderRepository = orderRepository;
-        this.cartRepository = cartRepository;
-        this.productInOrderRepository = productInOrderRepository;
+    public OrderController(OrderService orderService,
+                           CartService cartService,
+                           ProductInOrderService productInOrderService) {
+        this.orderService = orderService;
+        this.cartService = cartService;
+        this.productInOrderService = productInOrderService;
     }
 
     @GetMapping
@@ -49,7 +48,7 @@ public class OrderController {
             Pageable paging = PageRequest.of(page, size);
 
             Page<Order> pageOrders;
-            pageOrders = orderRepository.findByUser_IdOrderByIdDesc(user_id, paging);
+            pageOrders = orderService.findByUser_IdOrderByIdDesc(user_id, paging);
             orders = pageOrders.getContent();
 
             Map<String, Object> response = new HashMap<>();
@@ -74,18 +73,18 @@ public class OrderController {
             Order order = orderRequest.getOrder();
 
             // saving products in db and storing them in local variable
-            List<ProductInOrder> lastAddedProducts = productInOrderRepository.saveAll(productInOrders);
+            List<ProductInOrder> lastAddedProducts = productInOrderService.saveAll(productInOrders);
 
             // saving cart and storing it in local variable
-            Cart lastAddedCart = cartRepository.save(order.getCart());
+            Cart lastAddedCart = cartService.save(order.getCart());
 
             // for every added product saving id's in cart_products table
             lastAddedProducts.forEach(product ->
-                    cartRepository.saveInCart_Products(lastAddedCart.getId(), product.getId()));
+                    cartService.saveInCart_Products(lastAddedCart.getId(), product.getId()));
 
             // passing used cart_id to order
             order.getCart().setId(lastAddedCart.getId());
-            orderRepository.save(order);
+            orderService.save(order);
 
             return new ResponseEntity(null, HttpStatus.OK);
         } catch (Exception e) {

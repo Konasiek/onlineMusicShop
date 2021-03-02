@@ -36,4 +36,12 @@ public class Cart {
     public void setProductsInOrder(List<ProductInOrder> productsInOrder) {
         this.productsInOrder = productsInOrder;
     }
+
+    @Override
+    public String toString() {
+        return "Cart{" +
+                "id=" + id +
+                ", productsInOrder=" + productsInOrder +
+                '}';
+    }
 }
