@@ -1,5 +1,4 @@
 package com.online.musicshop.payload.request;
-
 import javax.validation.constraints.NotBlank;
 
 public class LoginRequest {
