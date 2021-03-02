@@ -64,7 +64,7 @@ export class ProductComponent implements OnInit {
 
                     if (totalItems <= this.pageSize) {
                     }
-                    console.log(response);
+                    // console.log(response);
                 },
                 error => {
                     console.log(error);

@@ -93,7 +93,6 @@ export class ShippingComponent implements OnInit {
 
             this.cartService.emptyCart();
             this.cartService.getItemsInCart();
-            // wait for respone?
             this.router.navigate(['/order']);
         }
     }

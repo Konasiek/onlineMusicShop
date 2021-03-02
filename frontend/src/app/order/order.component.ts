@@ -56,7 +56,7 @@ export class OrderComponent implements OnInit {
                     const {orders, totalItems} = response;
                     this.orders = orders;
                     this.count = totalItems;
-                    console.log(response);
+                    // console.log(response);
                 },
                 error => {
                     console.log(error);
