@@ -34,7 +34,7 @@ class ProductInOrderTest {
                         () -> assertEquals(2500L, (long) productInOrder.getPrice(), "price failed"),
                         () -> assertEquals(5L, (long) productInOrder.getQuantity(), "quantity failed"),
                         () -> assertAll("Category properties",
-                                () -> assertEquals("Banjo", productInOrder.getCategory().getName(), "cart id failed")))
+                                () -> assertEquals("Banjo", productInOrder.getCategory().getName(), "category name failed")))
         );
     }
 }
