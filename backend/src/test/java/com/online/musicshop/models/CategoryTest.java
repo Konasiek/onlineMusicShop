@@ -17,12 +17,12 @@ class CategoryTest {
     }
 
     @Test
-    void categoryTest() {
+    void category() {
 
         assertAll("Category tests",
                 () -> assertAll("Category properties",
                         () -> assertEquals(1001L, (long) category.getId(), "Id failed"),
-                        () -> assertNotEquals(1002L, (long) category.getId(), "Id failed"),
+                        () -> assertNotEquals(1002L, category.getId(), "Id failed"),
                         () -> assertEquals("Bass", category.getName(), "name failed"),
                         () -> assertNotEquals("Bas", category.getName(), "name failed"))
         );

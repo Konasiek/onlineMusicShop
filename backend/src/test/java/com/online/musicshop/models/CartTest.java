@@ -24,13 +24,14 @@ class CartTest {
     }
 
     @Test
-    void cartTest() {
+    void cart() {
         assertAll("Properties tests",
                 () -> assertAll("Cart properties",
                         () -> assertEquals(10001L, (long) cart.getId(), "Id failed")),
                 () -> assertAll("Products in order tests",
                         () -> assertFalse(cart.getProductsInOrder().isEmpty(), "Product in order failed"),
-                        () -> assertThrows(IndexOutOfBoundsException.class, () -> cart.getProductsInOrder().get(10)))
+                        () -> assertThrows(IndexOutOfBoundsException.class,
+                                () -> cart.getProductsInOrder().get(10), "No proper exception thrown"))
         );
     }
 }
