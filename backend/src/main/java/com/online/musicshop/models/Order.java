@@ -36,6 +36,28 @@ public class Order {
     public Order() {
     }
 
+    public Order(String buildingNumberAndApartment,
+                 String street,
+                 String city,
+                 String country,
+                 String postCode,
+                 String contactPerson,
+                 String email,
+                 String phone,
+                 User user,
+                 Cart cart) {
+        this.buildingNumberAndApartment = buildingNumberAndApartment;
+        this.street = street;
+        this.city = city;
+        this.country = country;
+        this.postCode = postCode;
+        this.contactPerson = contactPerson;
+        this.email = email;
+        this.phone = phone;
+        this.user = user;
+        this.cart = cart;
+    }
+
     public Long getId() {
         return id;
     }

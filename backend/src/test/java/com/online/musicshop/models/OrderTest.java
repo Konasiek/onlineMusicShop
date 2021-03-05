@@ -13,24 +13,14 @@ class OrderTest {
 
     @BeforeEach
     void setUp() {
-
-        order = new Order();
         cart = new Cart();
         cart.setId(100L);
-        user = new User();
+        user = new User("David", "david1111@gmail.com", "david12AXD");
         user.setId(99L);
 
+        order = new Order("5", "Main", "Boston", "USA", "34-666",
+                "James Bond", "pusher12@gmail.com", "666999666", user, cart);
         order.setId(100L);
-        order.setBuildingNumberAndApartment("5");
-        order.setCity("Boston");
-        order.setContactPerson("James Bond");
-        order.setCountry("USA");
-        order.setEmail("pusher12@gmail.com");
-        order.setPhone("666999666");
-        order.setPostCode("34-666");
-        order.setStreet("Main");
-        order.setCart(cart);
-        order.setUser(user);
     }
 
     @Test
@@ -50,6 +40,9 @@ class OrderTest {
                                 () -> assertEquals(100L, (long) cart.getId(), "cart id failed"),
                                 () -> assertThrows(IndexOutOfBoundsException.class, () -> cart.getProductsInOrder().get(10))),
                         () -> assertAll("User properties",
+                                () -> assertEquals("David", user.getUsername(), "user username failed"),
+                                () -> assertEquals("david1111@gmail.com", user.getEmail(), "user email failed"),
+                                () -> assertEquals("david12AXD", user.getPassword(), "user password failed"),
                                 () -> assertEquals(99L, (long) user.getId(), "user id failed")))
         );
     }

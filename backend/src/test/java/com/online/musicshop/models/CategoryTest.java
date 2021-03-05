@@ -11,9 +11,8 @@ class CategoryTest {
 
     @BeforeEach
     void setUp() {
-        category = new Category();
+        category = new Category("Bass");
         category.setId(1001L);
-        category.setName("Bass");
     }
 
     @Test

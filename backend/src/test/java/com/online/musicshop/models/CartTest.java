@@ -15,12 +15,11 @@ class CartTest {
 
     @BeforeEach
     void setUp() {
-        cart = new Cart();
         ProductInOrder productInOrder1 = new ProductInOrder();
         productsInOrder = new ArrayList<>();
         productsInOrder.add(productInOrder1);
+        cart = new Cart(productsInOrder);
         cart.setId(10001L);
-        cart.setProductsInOrder(productsInOrder);
     }
 
     @Test

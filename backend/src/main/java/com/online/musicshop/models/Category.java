@@ -17,6 +17,10 @@ public class Category {
     public Category() {
     }
 
+    public Category(@NotNull String name) {
+        this.name = name;
+    }
+
     public Long getId() {
         return id;
     }

@@ -11,16 +11,11 @@ class ProductInStockTest {
 
     @BeforeEach
     void setUp() {
-        productInStock = new ProductInStock();
-        productInStock.setId(89L);
-        productInStock.setImageURL("http://abdefg.com");
-        productInStock.setModelName("SD-7");
-        productInStock.setProducerName("Yamaha");
-        productInStock.setPrice(200L);
-        productInStock.setStock(10L);
         Category category = new Category();
         category.setName("Guitar");
-        productInStock.setCategory(category);
+        productInStock = new ProductInStock("Yamaha", "SD-7", "http://abdefg.com",
+                10L, 200L, category);
+        productInStock.setId(89L);
     }
 
     @Test

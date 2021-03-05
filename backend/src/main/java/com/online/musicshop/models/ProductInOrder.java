@@ -26,6 +26,20 @@ public class ProductInOrder {
     public ProductInOrder() {
     }
 
+    public ProductInOrder(String producerName,
+                          String modelName,
+                          String imageURL,
+                          Long price,
+                          Category category,
+                          Long quantity) {
+        this.producerName = producerName;
+        this.modelName = modelName;
+        this.imageURL = imageURL;
+        this.price = price;
+        this.category = category;
+        this.quantity = quantity;
+    }
+
     public Long getId() {
         return id;
     }

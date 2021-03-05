@@ -18,22 +18,17 @@ class UserTest {
 
     @BeforeEach
     void setUp() {
-        user = new User();
-        user.setId(100L);
-        user.setEmail("konrad12@gmail.com");
-        user.setPassword("12345XCV");
-        user.setUsername("konrad1212");
-
         Role role = new Role();
         role.setName(ERole.ROLE_USER);
         roles = new HashSet<>();
         roles.add(role);
-        user.setRoles(roles);
 
         Order order = new Order();
         orders = new ArrayList<>();
         orders.add(order);
-        user.setOrders(orders);
+
+        user = new User("konrad1212", "konrad12@gmail.com", "12345XCV", roles, orders);
+        user.setId(100L);
     }
 
     @Test

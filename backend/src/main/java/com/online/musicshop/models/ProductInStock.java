@@ -26,6 +26,20 @@ public class ProductInStock {
     public ProductInStock() {
     }
 
+    public ProductInStock(String producerName,
+                          String modelName,
+                          String imageURL,
+                          Long stock,
+                          Long price,
+                          Category category) {
+        this.producerName = producerName;
+        this.modelName = modelName;
+        this.imageURL = imageURL;
+        this.stock = stock;
+        this.price = price;
+        this.category = category;
+    }
+
     public Long getId() {
         return id;
     }

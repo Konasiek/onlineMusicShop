@@ -11,16 +11,10 @@ class ProductInOrderTest {
 
     @BeforeEach
     void setUp() {
-        productInOrder = new ProductInOrder();
-        productInOrder.setId(100L);
-        productInOrder.setImageURL("https://imageUrl.com");
-        productInOrder.setModelName("Bullet");
-        productInOrder.setProducerName("Fender");
-        productInOrder.setPrice(2500L);
-        productInOrder.setQuantity(5L);
         Category category = new Category();
         category.setName("Banjo");
-        productInOrder.setCategory(category);
+        productInOrder = new ProductInOrder("Fender", "Bullet", "https://imageUrl.com", 2500L, category, 5L);
+        productInOrder.setId(100L);
     }
 
     @Test
