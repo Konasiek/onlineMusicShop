@@ -1,146 +1,137 @@
 import {EventEmitter, Injectable, Output} from '@angular/core';
 
 @Injectable({
-    providedIn: 'root'
+  providedIn: 'root'
 })
 export class CartService {
 
-    constructor() {
+  constructor() {
+  }
+
+  cart: string[] = [];
+  data: string[] = [];
+
+  itemsInCart: number;
+
+  // tslint:disable-next-line:no-output-native
+  @Output() change: EventEmitter<number> = new EventEmitter<number>();
+
+
+  initCart(): void {
+    sessionStorage.setItem('cart', '');
+  }
+
+  retrieveCart(): any {
+    if (sessionStorage.getItem('cart')) {
+      return JSON.parse(sessionStorage.getItem('cart'));
+    }
+  }
+
+  addToCart(product: any, quantity: number): boolean {
+
+    this.cart = (sessionStorage.getItem('cart') != null) ? JSON.parse(sessionStorage.getItem('cart')) : [];
+    this.data = JSON.parse(sessionStorage.getItem('data'));
+    let hasMatch = false;
+
+    // checking product exists already in a cart
+    for (const cartIndex of this.cart) {
+      if (cartIndex[`id`] === product.id) {
+        hasMatch = true;
+        break;
+      }
+    }
+    if (hasMatch) {
+      return false;
     }
 
-    cart: string[] = [];
-    data: string[] = [];
+    const total: number = product.price * quantity;
+    const cartData: any = {
+      id: product.id,
+      modelName: product.modelName,
+      producerName: product.producerName,
+      quantity,
+      stock: product.stock,
+      imageURL: product.imageURL,
+      price: product.price,
+      total
+    };
 
-    itemsInCart: number;
+    this.cart.push(cartData);
+    sessionStorage.setItem('cart', JSON.stringify(this.cart));
 
+    this.getItemsInCart();
 
-    initCart() {
-        sessionStorage.setItem('cart', '');
-        return true;
+    return true;
+  }
+
+  removeItem(productId: number): string[] {
+    this.cart = JSON.parse(sessionStorage.getItem('cart'));
+    const tempCart: string[] = [];
+
+    for (const cartIndex of this.cart) {
+      if (cartIndex[`id`] !== productId) {
+        tempCart.push(cartIndex);
+      }
     }
+    this.cart = tempCart;
+    sessionStorage.setItem('cart', JSON.stringify(this.cart));
 
-    retriveCart() {
-        if (sessionStorage.getItem('cart')) {
-            return JSON.parse(sessionStorage.getItem('cart'));
-        } else {
-            return false;
-        }
-    }
+    this.getItemsInCart();
 
-    addToCart(product: any, quantity: number) {
+    return this.cart;
+  }
 
-        this.cart = (sessionStorage.getItem('cart') != null) ? JSON.parse(sessionStorage.getItem('cart')) : [];
-        this.data = JSON.parse(sessionStorage.getItem('data'));
-        let hasMatch: boolean = false;
+  updateQuantity(productId: number, quantity: number): string[] {
+    this.cart = JSON.parse(sessionStorage.getItem('cart'));
+    const tempCart: string[] = [];
 
-        //checking product exists already in a cart
-        for (let index = 0; index < this.cart.length; ++index) {
 
-            let cartIndex = this.cart[index];
-
-            if (cartIndex['id'] == product['id']) {
-                hasMatch = true;
-                break;
-            }
-        }
-        if (hasMatch) {
-            return false;
-        }
-
-        let total: number = product['price'] * quantity;
-        let cartData: any = {
-            'id': product['id'],
-            'modelName': product['modelName'],
-            'producerName': product['producerName'],
-            'quantity': quantity,
-            'stock': product['stock'],
-            'imageURL': product['imageURL'],
-            'price': product['price'],
-            'total': total
+    for (const cartIndex of this.cart) {
+      if (cartIndex[`id`] === productId) {
+        const total: number = cartIndex[`price`] * quantity;
+        const cartData: any = {
+          id: cartIndex[`id`],
+          modelName: cartIndex[`modelName`],
+          producerName: cartIndex[`producerName`],
+          quantity,
+          stock: cartIndex[`stock`],
+          imageURL: cartIndex[`imageURL`],
+          price: cartIndex[`price`],
+          total
         };
 
-        this.cart.push(cartData);
-        sessionStorage.setItem('cart', JSON.stringify(this.cart));
-
-        this.getItemsInCart();
-
-        return true;
+        tempCart.push(cartData);
+      } else {
+        tempCart.push(cartIndex);
+      }
     }
 
-    removeItem(productId: number) {
-        this.cart = JSON.parse(sessionStorage.getItem('cart'));
-        let tempCart: string[] = [];
+    this.cart = tempCart;
+    sessionStorage.setItem('cart', JSON.stringify(this.cart));
 
-        for (let index = 0; index < this.cart.length; ++index) {
-            let cartIndex = this.cart[index];
+    return this.cart;
+  }
 
-            if (cartIndex['id'] != productId) {
-                tempCart.push(cartIndex);
-            }
-        }
-        this.cart = tempCart;
-        sessionStorage.setItem('cart', JSON.stringify(this.cart));
+  getTotal(): number {
+    this.cart = JSON.parse(sessionStorage.getItem('cart'));
+    let total = 0.00;
 
-        this.getItemsInCart();
-
-        return this.cart;
+    for (const cartIndex of this.cart) {
+      total += cartIndex[`total`];
     }
+    return total;
+  }
 
-    updateQuantity(productId: number, quantity: number) {
-        this.cart = JSON.parse(sessionStorage.getItem('cart'));
-        let tempCart: string[] = [];
-
-        for (let index = 0; index < this.cart.length; ++index) {
-            let cartIndex = this.cart[index];
-
-            if (cartIndex['id'] === productId) {
-
-                let total: number = cartIndex['price'] * quantity;
-                let cartData: any = {
-                    'id': cartIndex['id'],
-                    'modelName': cartIndex['modelName'],
-                    'producerName': cartIndex['producerName'],
-                    'quantity': quantity,
-                    'stock': cartIndex['stock'],
-                    'imageURL': cartIndex['imageURL'],
-                    'price': cartIndex['price'],
-                    'total': total
-                };
-
-                tempCart.push(cartData);
-            } else {
-                tempCart.push(cartIndex);
-            }
-        }
-
-        this.cart = tempCart;
-        sessionStorage.setItem('cart', JSON.stringify(this.cart));
-
-        return this.cart;
+  getItemsInCart(): void {
+    const tempCart = JSON.parse(sessionStorage.getItem('cart'));
+    if (tempCart != null) {
+      this.itemsInCart = tempCart.length;
     }
+    this.change.emit(this.itemsInCart);
+  }
 
-    getTotal() {
-        this.cart = JSON.parse(sessionStorage.getItem('cart'));
-        let total: number = 0.00;
-
-        for (let index = 0; index < this.cart.length; ++index) {
-            let cartIndex = this.cart[index];
-            total += cartIndex['total'];
-        }
-        return total;
-    }
-
-    @Output() change: EventEmitter<number> = new EventEmitter<number>();
-    getItemsInCart(): void {
-        let tempCart = JSON.parse(sessionStorage.getItem('cart'));
-        if (tempCart != null) {
-            this.itemsInCart = tempCart.length;
-        }
-        this.change.emit(this.itemsInCart);
-    }
-
-    emptyCart(): void {
-        sessionStorage.removeItem('cart');
-        this.itemsInCart = 0;
-    }
+  emptyCart(): void {
+    sessionStorage.removeItem('cart');
+    this.itemsInCart = 0;
+  }
 }

@@ -1,19 +1,19 @@
 import {EventEmitter, Injectable, Output} from '@angular/core';
 
 @Injectable({
-    providedIn: 'root'
+  providedIn: 'root'
 })
 export class LoginService {
 
-    isLogIn: boolean;
+  isLogIn: boolean;
 
-    constructor() {
-    }
+  constructor() {
+  }
 
-    @Output() change: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() change: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-    changeLoginInStatus(isLogIn: boolean) {
-        this.isLogIn = isLogIn;
-        this.change.emit(this.isLogIn);
-    }
+  changeLoginInStatus(isLogIn: boolean) {
+    this.isLogIn = isLogIn;
+    this.change.emit(this.isLogIn);
+  }
 }

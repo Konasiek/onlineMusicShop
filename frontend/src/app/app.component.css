@@ -1,29 +1,30 @@
 .shoppingCart {
-    height: 30px;
-    width: 30px;
+  height: 30px;
+  width: 30px;
 }
 
 .navbar.navbar-expand.navbar-dark {
-    height: 50px;
-    padding-bottom: 0px;
-    padding-top: 0px;
+  height: 50px;
+  padding-bottom: 0px;
+  padding-top: 0px;
 }
 
 #cartWithItems {
-    position: relative;
-    text-align: center;
-    color: white;
-    height: 100%;
-    width: 100%;
+  position: relative;
+  text-align: center;
+  color: white;
+  height: 100%;
+  width: 100%;
 }
 
 #numberOfItems {
-    position: absolute;
-    bottom: 8px;
-    left: 13px;
-    color: black;
-    font-weight: bolder;
+  position: absolute;
+  bottom: 8px;
+  left: 13px;
+  color: black;
+  font-weight: bolder;
 }
+
 .nav-link {
-    cursor: pointer;
+  cursor: pointer;
 }

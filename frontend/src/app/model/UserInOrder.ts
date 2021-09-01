@@ -1,9 +1,9 @@
 export class UserInOrder {
 
-    id: number;
+  id: number;
 
 
-    constructor(id: number) {
-        this.id = id;
-    }
+  constructor(id: number) {
+    this.id = id;
+  }
 }

@@ -1,31 +1,33 @@
 <div id="ordersIsEmpty" *ngIf="orders.length === 0">
-    <br><br><h3>You have no orders yet</h3>
+  <br><br>
+  <h3>You have no orders yet</h3>
 </div>
 <div class="list row" *ngIf="orders.length !== 0">
-    <div class="orderTitle">
-        <h3><strong>Your orders</strong></h3>
-    </div>
-    <div class="col">
-        <ul style="clear: both" class="list-group">
-            <li class="list-group-item"
-                *ngFor="let order of orders | paginate : {itemsPerPage: pageSize,currentPage: page,totalItems: count}; let i = index"
-                [class.active]="i == currentIndex">
-                <div id="address">to: {{order.contactPerson}} {{order.city}}
-                    , {{order.street}} {{order.buildingNumberAndApartment}} {{order.country}}</div>
-                <ul class="productList">
-                    <li class="" *ngFor="let productInOrder of order.cart['productsInOrder']">
-                        <div id="modelName">{{productInOrder.modelName}}</div>
-                        <div id="producerName">{{productInOrder.producerName}}</div>
-                        <div id="quantity">x{{productInOrder.quantity}}</div>
-                        <div id="productPrice">{{productInOrder.price | currency}}</div>
-                    </li>
-                </ul>
-            </li>
+  <div class="orderTitle">
+    <h3><strong>Your orders</strong></h3>
+  </div>
+  <div class="col">
+    <ul style="clear: both" class="list-group">
+      <li class="list-group-item"
+          *ngFor="let order of orders |
+           paginate : {itemsPerPage: pageSize,currentPage: page,totalItems: count}; let i = index"
+          [class.active]="i == currentIndex">
+        <div id="address">to: {{order.contactPerson}} {{order.city}}
+          , {{order.street}} {{order.buildingNumberAndApartment}} {{order.country}}</div>
+        <ul class="productList">
+          <li class="" *ngFor="let productInOrder of order.cart['productsInOrder']">
+            <div id="modelName">{{productInOrder.modelName}}</div>
+            <div id="producerName">{{productInOrder.producerName}}</div>
+            <div id="quantity">x{{productInOrder.quantity}}</div>
+            <div id="productPrice">{{productInOrder.price | currency}}</div>
+          </li>
         </ul>
-        <div class="itemsOnPage"></div>
-        <div class="pagination">
-            <pagination-controls previousLabel="" nextLabel="" responsive="true"
-                                 (pageChange)="handlePageChange($event)"></pagination-controls>
-        </div>
+      </li>
+    </ul>
+    <div class="itemsOnPage"></div>
+    <div class="pagination">
+      <pagination-controls previousLabel="" nextLabel="" responsive="true"
+                           (pageChange)="handlePageChange($event)"></pagination-controls>
     </div>
+  </div>
 </div>

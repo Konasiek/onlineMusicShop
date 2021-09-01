@@ -1,70 +1,70 @@
 import {Component, OnInit} from '@angular/core';
-import {OrderService} from "../_services/order.service";
-import {TokenStorageService} from "../_services/token-storage.service";
-import {CartService} from "../_services/cart.service";
+import {OrderService} from '../_services/order.service';
+import {TokenStorageService} from '../_services/token-storage.service';
+import {CartService} from '../_services/cart.service';
 
 @Component({
-    selector: 'app-order',
-    templateUrl: './order.component.html',
-    styleUrls: ['./order.component.css']
+  selector: 'app-order',
+  templateUrl: './order.component.html',
+  styleUrls: ['./order.component.css']
 })
 export class OrderComponent implements OnInit {
 
-    orders: any;
-    currentIndex = -1;
+  orders: any;
+  currentIndex = -1;
 
-    userObj: any;
-    user_id: any;
+  userObj: any;
+  user_id: any;
 
-    page = 1;
-    count = 0;
-    pageSize = 5;
+  page = 1;
+  count = 0;
+  pageSize = 5;
 
-    constructor(private orderService: OrderService,
-                private tokenStorageService: TokenStorageService,
-                private cartService: CartService) {
+  constructor(private orderService: OrderService,
+              private tokenStorageService: TokenStorageService,
+              private cartService: CartService) {
+  }
+
+  ngOnInit(): void {
+    this.userObj = Object.values(this.tokenStorageService.getUser());
+    this.user_id = this.userObj[0];
+    this.cartService.retrieveCart();
+    this.retrieveOrders();
+  }
+
+  getRequestParams(user_id, page, pageSize): any {
+    let params = {};
+
+    if (user_id) {
+      params['user_id'] = user_id;
     }
-
-    ngOnInit(): void {
-        this.userObj = Object.values(this.tokenStorageService.getUser());
-        this.user_id = this.userObj[0];
-        this.cartService.retriveCart();
-        this.retrieveOrders();
+    if (page) {
+      params['page'] = page - 1;
     }
-
-    getRequestParams(user_id, page, pageSize): any {
-        let params = {};
-
-        if (user_id) {
-            params['user_id'] = user_id;
-        }
-        if (page) {
-            params['page'] = page - 1;
-        }
-        if (pageSize) {
-            params['size'] = pageSize;
-        }
-        return params;
+    if (pageSize) {
+      params['size'] = pageSize;
     }
+    return params;
+  }
 
-    retrieveOrders(): void {
-        const params = this.getRequestParams(this.user_id, this.page, this.pageSize);
+  retrieveOrders(): void {
+    const params = this.getRequestParams(this.user_id, this.page, this.pageSize);
 
-        this.orderService.getAll(params)
-            .subscribe(
-                response => {
-                    const {orders, totalItems} = response;
-                    this.orders = orders;
-                    this.count = totalItems;
-                    console.log(response);
-                },
-                error => {
-                    console.log(error);
-                })
-    }
+    this.orderService.getAll(params)
+      .subscribe(
+        response => {
+          const {orders, totalItems} = response;
+          this.orders = orders;
+          this.count = totalItems;
+          console.log(response);
+        },
+        error => {
+          console.log(error);
+        });
+  }
 
-    handlePageChange(event): void {
-        this.page = event;
-        this.retrieveOrders();
-    }
+  handlePageChange(event): void {
+    this.page = event;
+    this.retrieveOrders();
+  }
 }

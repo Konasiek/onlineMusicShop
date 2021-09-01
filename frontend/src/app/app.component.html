@@ -1,55 +1,55 @@
 <div class="app">
-    <nav class="navbar navbar-expand navbar-dark bg-dark">
-        <a class="navbar-brand" routerLink="product" (click)="changeCategory(0)">musicShop</a>
-        <ul class="navbar-nav mr-auto" routerLinkActive="active">
-            <li class="nav-item" *ngIf="showAdminBoard">
-                <a class="nav-link" routerLink="admin">admin board</a>
-            </li>
-            <li class="nav-item" *ngIf="showModeratorBoard">
-                <a class="nav-link" routerLink="mod">moderator board</a>
-            </li>
-            <li class="nav-item" (click)="changeCategory(1)">
-                <a class="nav-link" routerLink="product">guitars</a>
-            </li>
-            <li class="nav-item" (click)="changeCategory(2)">
-                <a class="nav-link" routerLink="product">drums</a>
-            </li>
-            <li class="nav-item" (click)="changeCategory(3)">
-                <a class="nav-link" routerLink="product">keys</a>
-            </li>
-        </ul>
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-                <a class="nav-link" routerLink="cart" *ngIf="itemsInCart !== 0 && itemsInCart !== undefined">
-                    <div id="cartWithItems">
-                        <img src="../assets/shoppingCartWithItems.png" class="shoppingCart">
-                        <div id="numberOfItems">{{itemsInCart}}</div>
-                    </div>
-                </a>
-                <a class="nav-link" routerLink="cart" *ngIf="(itemsInCart === 0 || itemsInCart === undefined)">
-                    <img src="../assets/shoppingCart.png" class="shoppingCart">
-                </a>
-            </li>
-            <li class="nav-item" *ngIf="isLoggedIn">
-                <a class="nav-link" routerLink="order">orders</a>
-            </li>
-            <li class="nav-item" *ngIf="isLoggedIn">
-                <a class="nav-link" routerLink="profile">{{ username }}</a>
-            </li>
-            <li class="nav-item" *ngIf="!isLoggedIn">
-                <a class="nav-link" routerLink="register">sign up</a>
-            </li>
-            <li class="nav-item" *ngIf="!isLoggedIn">
-                <a class="nav-link" routerLink="login">log in</a>
-            </li>
-            <li class="nav-item" *ngIf="isLoggedIn">
-                <a class="nav-link" (click)="logout()">log out</a>
-            </li>
-        </ul>
-    </nav>
-    <div class="container">
-        <router-outlet></router-outlet>
-    </div>
+  <nav class="navbar navbar-expand navbar-dark bg-dark">
+    <a class="navbar-brand" routerLink="product" (click)="changeCategory(1)">musicShop</a>
+    <ul class="navbar-nav mr-auto" routerLinkActive="active">
+      <li class="nav-item" *ngIf="showAdminBoard">
+        <a class="nav-link" routerLink="admin">admin board</a>
+      </li>
+      <li class="nav-item" *ngIf="showModeratorBoard">
+        <a class="nav-link" routerLink="mod">moderator board</a>
+      </li>
+      <li class="nav-item" (click)="changeCategory(1)">
+        <a class="nav-link" routerLink="product">guitars</a>
+      </li>
+      <li class="nav-item" (click)="changeCategory(2)">
+        <a class="nav-link" routerLink="product">drums</a>
+      </li>
+      <li class="nav-item" (click)="changeCategory(3)">
+        <a class="nav-link" routerLink="product">keys</a>
+      </li>
+    </ul>
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="cart" *ngIf="itemsInCart !== 0 && itemsInCart !== undefined">
+          <div id="cartWithItems">
+            <img src="../assets/shoppingCartWithItems.png" class="shoppingCart">
+            <div id="numberOfItems">{{itemsInCart}}</div>
+          </div>
+        </a>
+        <a class="nav-link" routerLink="cart" *ngIf="(itemsInCart === 0 || itemsInCart === undefined)">
+          <img src="../assets/shoppingCart.png" class="shoppingCart">
+        </a>
+      </li>
+      <li class="nav-item" *ngIf="isLoggedIn">
+        <a class="nav-link" routerLink="order">orders</a>
+      </li>
+      <li class="nav-item" *ngIf="isLoggedIn">
+        <a class="nav-link" routerLink="profile">{{ username }}</a>
+      </li>
+      <li class="nav-item" *ngIf="!isLoggedIn">
+        <a class="nav-link" routerLink="register">sign up</a>
+      </li>
+      <li class="nav-item" *ngIf="!isLoggedIn">
+        <a class="nav-link" routerLink="login">log in</a>
+      </li>
+      <li class="nav-item" *ngIf="isLoggedIn">
+        <a class="nav-link" (click)="logout()">log out</a>
+      </li>
+    </ul>
+  </nav>
+  <div class="container">
+    <router-outlet></router-outlet>
+  </div>
 </div>
 
 

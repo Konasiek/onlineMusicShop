@@ -1,54 +1,53 @@
 import {Component, HostListener, OnInit} from '@angular/core';
 import {AuthService} from '../_services/auth.service';
 import {TokenStorageService} from '../_services/token-storage.service';
-import {Router} from "@angular/router";
-import {LoginService} from "../_services/login.service";
+import {LoginService} from '../_services/login.service';
 
 @Component({
-    selector: 'app-login',
-    templateUrl: './login.component.html',
-    styleUrls: ['./login.component.css']
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-    form: any = {
-        username: null,
-        password: null
-    };
-    @HostListener('onSubmit')
-    isLoggedIn = false;
-    isLoginFailed = false;
-    errorMessage = '';
-    roles: string[] = [];
+  form: any = {
+    username: null,
+    password: null
+  };
+  @HostListener('onSubmit')
+  isLoggedIn = false;
+  isLoginFailed = false;
+  errorMessage = '';
+  roles: string[] = [];
 
-    constructor(private authService: AuthService,
-                private tokenStorage: TokenStorageService,
-                private loginService: LoginService) {
+  constructor(private authService: AuthService,
+              private tokenStorage: TokenStorageService,
+              private loginService: LoginService) {
+  }
+
+  ngOnInit(): void {
+    if (this.tokenStorage.getToken()) {
+      this.isLoggedIn = true;
+      this.roles = this.tokenStorage.getUser().roles;
     }
+  }
 
-    ngOnInit(): void {
-        if (this.tokenStorage.getToken()) {
-            this.isLoggedIn = true;
-            this.roles = this.tokenStorage.getUser().roles;
-        }
-    }
+  onSubmit(): void {
+    const {username, password} = this.form;
 
-    onSubmit(): void {
-        const {username, password} = this.form;
+    this.authService.login(username, password).subscribe(
+      data => {
+        this.tokenStorage.saveToken(data.accessToken);
+        this.tokenStorage.saveUser(data);
 
-        this.authService.login(username, password).subscribe(
-            data => {
-                this.tokenStorage.saveToken(data.accessToken);
-                this.tokenStorage.saveUser(data);
-
-                this.isLoginFailed = false;
-                this.isLoggedIn = true;
-                this.roles = this.tokenStorage.getUser().roles;
-                this.loginService.changeLoginInStatus(this.isLoggedIn);
-            },
-            err => {
-                this.errorMessage = err.error.message;
-                this.isLoginFailed = true;
-            }
-        );
-    }
+        this.isLoginFailed = false;
+        this.isLoggedIn = true;
+        this.roles = this.tokenStorage.getUser().roles;
+        this.loginService.changeLoginInStatus(this.isLoggedIn);
+      },
+      err => {
+        this.errorMessage = err.error.message;
+        this.isLoginFailed = true;
+      }
+    );
+  }
 }
